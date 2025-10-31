@@ -98,6 +98,7 @@ function renderTeamDetails(team) {
                 </a>
             ` : ''}
         </div>
+        </div>
     `;
 }
 
