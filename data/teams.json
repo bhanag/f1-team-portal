@@ -18,7 +18,7 @@
           "name": "Lewis Hamilton",
           "number": "44",
           "nationality": "🇬🇧 British",
-          "image": "/images/drivers/hamilton.jpg",
+          "image": "/images/drivers/hamilton.svg",
           "points": 245,
           "races": 350,
           "wins": 105
