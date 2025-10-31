@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Team Portal - Official Formula 1 Teams</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- HEADER / NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-text">F1</span>
+                    <span class="logo-subtext">Teams</span>
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="navbar-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#teams-section" class="nav-link">Teams</a>
+                <a href="#drivers" class="nav-link">Drivers</a>
+                <a href="#standings" class="nav-link">Standings</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="search-box"
+                    class="search-input"
+                    placeholder="Search teams..."
+                    aria-label="Search teams"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <!-- Dark Mode Toggle -->
+            <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span class="mode-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-headline">Meet the 2025 Formula 1 Teams</h1>
+            <p class="hero-subtitle">Official team data fetched directly from Formula1.com</p>
+            <button class="cta-button" id="explore-button">Explore Teams</button>
+        </div>
+    </section>
+
+    <!-- TEAMS GRID SECTION -->
+    <section class="teams-section" id="teams-section">
+        <div class="section-container">
+            <h2 class="section-title">All 10 Formula 1 Teams</h2>
+            <div class="teams-grid" id="teams-grid">
+                <!-- Teams will be dynamically injected here by JavaScript -->
+                <div class="teams-loading">Loading teams...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM DETAILS MODAL -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-container" id="modal-container">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">×</button>
+            <div class="modal-content" id="modal-content">
+                <!-- Team details will be dynamically injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">About</h3>
+                <p class="footer-text">F1 Team Portal showcases all official Formula 1 teams with real-time data and team information.</p>
+            </div>
+
+            <!-- Links Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">Terms of Use</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">Contact</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">Follow</h3>
+                <ul class="footer-links">
+                    <li><a href="https://twitter.com/F1" target="_blank" rel="noopener">Twitter/X</a></li>
+                    <li><a href="https://instagram.com/formula1" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://youtube.com/@formula1" target="_blank" rel="noopener">YouTube</a></li>
+                </ul>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-section footer-copyright">
+                <p class="footer-text">Data © Formula1.com | For educational use only</p>
+                <p class="footer-text">Powered by Vanilla JS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/utils.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/ui-renderer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
