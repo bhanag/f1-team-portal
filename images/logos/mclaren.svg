@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect fill="#FF8700" width="100" height="100" rx="12"/>
+  <path d="M 35 40 L 65 40 L 65 60 L 35 60 Z" fill="white" opacity="0.8"/>
+  <text x="50" y="55" font-size="24" font-weight="bold" fill="#FF8700" text-anchor="middle" font-family="Arial">MCL</text>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect fill="#2B4562" width="100" height="100" rx="12"/>
+  <polygon points="50,25 70,45 70,75 30,75 30,45" fill="white" opacity="0.8"/>
+  <text x="50" y="58" font-size="18" font-weight="bold" fill="#2B4562" text-anchor="middle" font-family="Arial">AT</text>
+</svg>
