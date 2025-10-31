@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Standings - Formula 1 Team Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .standings-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--color-dark-secondary);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        body.light-mode .standings-table {
+            background-color: var(--color-light-secondary);
+        }
+
+        .standings-table thead {
+            background: linear-gradient(135deg, var(--color-accent-red), rgba(255, 24, 1, 0.3));
+        }
+
+        .standings-table th {
+            padding: var(--spacing-md);
+            text-align: left;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            font-size: var(--font-size-small);
+            letter-spacing: 1px;
+        }
+
+        .standings-table td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-light);
+            font-size: var(--font-size-base);
+        }
+
+        body.light-mode .standings-table td {
+            border-bottom-color: var(--color-light-tertiary);
+            color: var(--color-light-text);
+        }
+
+        .standings-table tbody tr {
+            transition: all var(--transition-normal);
+        }
+
+        .standings-table tbody tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        body.light-mode .standings-table tbody tr:hover {
+            background-color: var(--color-light-tertiary);
+        }
+
+        .standings-rank {
+            font-weight: 700;
+            font-size: var(--font-size-xl);
+            color: var(--color-accent-red);
+            width: 40px;
+            text-align: center;
+        }
+
+        .standings-rank.podium-1 {
+            color: #FFD700;
+        }
+
+        .standings-rank.podium-2 {
+            color: #C0C0C0;
+        }
+
+        .standings-rank.podium-3 {
+            color: #CD7F32;
+        }
+
+        .driver-cell {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .driver-photo {
+            width: 40px;
+            height: 50px;
+            border-radius: var(--border-radius-sm);
+            object-fit: cover;
+            background-color: var(--color-dark-tertiary);
+        }
+
+        .driver-info h4 {
+            margin: 0;
+            font-size: var(--font-size-base);
+            font-weight: 700;
+        }
+
+        .driver-info p {
+            margin: 2px 0 0 0;
+            font-size: var(--font-size-small);
+            color: var(--color-text-muted);
+        }
+
+        .team-name {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-small);
+        }
+
+        .points-cell {
+            font-weight: 700;
+            font-size: var(--font-size-large);
+            color: var(--color-accent-red);
+        }
+
+        .stats-cell {
+            text-align: center;
+            font-size: var(--font-size-small);
+            color: var(--color-text-muted);
+        }
+
+        @media (max-width: 767px) {
+            .standings-table {
+                font-size: 13px;
+            }
+
+            .standings-table th,
+            .standings-table td {
+                padding: var(--spacing-sm);
+            }
+
+            .driver-photo {
+                width: 32px;
+                height: 40px;
+            }
+
+            .driver-info h4 {
+                font-size: 13px;
+            }
+
+            .driver-info p {
+                font-size: 11px;
+            }
+
+            .standings-rank {
+                width: 30px;
+                font-size: var(--font-size-base);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-text">F1</span>
+                    <span class="logo-subtext">Teams</span>
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="navbar-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#teams-section" class="nav-link">Teams</a>
+                <a href="drivers.html" class="nav-link">Drivers</a>
+                <a href="standings.html" class="nav-link">Standings</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="search-box"
+                    class="search-input"
+                    placeholder="Search standings..."
+                    aria-label="Search standings"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <!-- Dark Mode Toggle -->
+            <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span class="mode-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-headline">Driver Standings 2025</h1>
+            <p class="hero-subtitle">Current season points and rankings</p>
+        </div>
+    </section>
+
+    <!-- STANDINGS SECTION -->
+    <section class="teams-section">
+        <div class="standings-container">
+            <h2 class="section-title">Championship Standings</h2>
+            <table class="standings-table" id="standings-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">Pos</th>
+                        <th style="flex: 1;">Driver</th>
+                        <th style="width: 100px;">Team</th>
+                        <th style="width: 100px;">Points</th>
+                        <th style="width: 80px;">Races</th>
+                        <th style="width: 80px;">Wins</th>
+                    </tr>
+                </thead>
+                <tbody id="standings-body">
+                    <tr>
+                        <td colspan="6" class="teams-loading">Loading standings...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">About</h3>
+                <p class="footer-text">F1 Team Portal showcases all official Formula 1 teams and drivers with real-time data.</p>
+            </div>
+
+            <!-- Links Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">Terms of Use</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">Follow</h3>
+                <ul class="footer-links">
+                    <li><a href="https://twitter.com/F1" target="_blank" rel="noopener">Twitter/X</a></li>
+                    <li><a href="https://instagram.com/formula1" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://youtube.com/@formula1" target="_blank" rel="noopener">YouTube</a></li>
+                </ul>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-section footer-copyright">
+                <p class="footer-text">Data © Formula1.com | For educational use only</p>
+                <p class="footer-text">Powered by Vanilla JS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/utils.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/standings.js"></script>
+</body>
+</html>
