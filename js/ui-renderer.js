@@ -37,6 +37,7 @@ function renderTeamDetails(team) {
     const driversHTML = renderDriverCards(team.drivers || []);
 
     return `
+        <div style="--team-color: ${team.accent_color}">
         <div class="modal-banner" style="background: linear-gradient(135deg, ${team.accent_color}, rgba(255, 24, 1, 0.3));">
             <img src="${team.logo}" alt="${team.name} logo" class="modal-banner-logo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%25%22 y=%2250%25%22 font-size=%2240%22 fill=%22%23CCC%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>${team.name.charAt(0)}</text></svg>'">
             <h2 class="modal-banner-title">${team.name}</h2>
