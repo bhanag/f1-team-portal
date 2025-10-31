@@ -1,126 +1,6 @@
 {
   "teams": [
     {
-      "id": "mercedes",
-      "name": "Mercedes",
-      "logo": "/images/logos/mercedes.svg",
-      "country": "Germany",
-      "founded": 1954,
-      "principal": "Toto Wolff",
-      "powerUnit": "Mercedes",
-      "championships": 8,
-      "wins": 120,
-      "podiums": 300,
-      "accent_color": "#00D4BE",
-      "drivers": [
-        {
-          "id": "hamilton",
-          "name": "Lewis Hamilton",
-          "number": "44",
-          "nationality": "🇬🇧 British",
-          "image": "/images/drivers/hamilton.svg",
-          "points": 245,
-          "races": 350,
-          "wins": 105
-        },
-        {
-          "id": "russell",
-          "name": "George Russell",
-          "number": "63",
-          "nationality": "🇬🇧 British",
-          "image": "/images/drivers/russell.svg",
-          "points": 178,
-          "races": 98,
-          "wins": 2
-        }
-      ],
-      "website": "https://mercedesamgf1.com",
-      "social": {
-        "twitter": "https://twitter.com/MercedesAMGF1",
-        "instagram": "https://instagram.com/mercedesf1"
-      }
-    },
-    {
-      "id": "red-bull",
-      "name": "Red Bull",
-      "logo": "/images/logos/red-bull.svg",
-      "country": "Austria",
-      "founded": 2005,
-      "principal": "Christian Horner",
-      "powerUnit": "Honda RBPT",
-      "championships": 5,
-      "wins": 120,
-      "podiums": 280,
-      "accent_color": "#0600EF",
-      "drivers": [
-        {
-          "id": "verstappen",
-          "name": "Max Verstappen",
-          "number": "1",
-          "nationality": "🇳🇱 Dutch",
-          "image": "/images/drivers/verstappen.svg",
-          "points": 403,
-          "races": 256,
-          "wins": 58
-        },
-        {
-          "id": "perez",
-          "name": "Sergio Pérez",
-          "number": "11",
-          "nationality": "🇲🇽 Mexican",
-          "image": "/images/drivers/perez.svg",
-          "points": 156,
-          "races": 312,
-          "wins": 6
-        }
-      ],
-      "website": "https://www.redbullracing.com",
-      "social": {
-        "twitter": "https://twitter.com/redbullracing",
-        "instagram": "https://instagram.com/redbullracing"
-      }
-    },
-    {
-      "id": "ferrari",
-      "name": "Ferrari",
-      "logo": "/images/logos/ferrari.svg",
-      "country": "Italy",
-      "founded": 1950,
-      "principal": "Fred Vasseur",
-      "powerUnit": "Ferrari",
-      "championships": 16,
-      "wins": 246,
-      "podiums": 800,
-      "accent_color": "#FF1801",
-      "drivers": [
-        {
-          "id": "leclerc",
-          "name": "Charles Leclerc",
-          "number": "16",
-          "nationality": "🇲🇨 Monégasque",
-          "image": "/images/drivers/leclerc.svg",
-          "points": 290,
-          "races": 156,
-          "wins": 5
-        },
-        {
-          "id": "sainz",
-          "name": "Carlos Sainz",
-          "number": "55",
-          "nationality": "🇪🇸 Spanish",
-          "image": "/images/drivers/sainz.svg",
-          "points": 234,
-          "races": 263,
-          "wins": 3
-        }
-      ],
-      "website": "https://www.ferrari.com/en/formula1",
-      "social": {
-        "twitter": "https://twitter.com/Scuderiaferrari",
-        "instagram": "https://instagram.com/scuderiaferrari"
-      }
-    },
-    {
       "id": "mclaren",
       "name": "McLaren",
       "logo": "/images/logos/mclaren.svg",
@@ -139,9 +19,9 @@
           "number": "4",
           "nationality": "🇬🇧 British",
           "image": "/images/drivers/norris.svg",
-          "points": 260,
-          "races": 145,
-          "wins": 1
+          "points": 357,
+          "races": 21,
+          "wins": 7
         },
         {
           "id": "piastri",
@@ -149,9 +29,9 @@
           "number": "81",
           "nationality": "🇦🇺 Australian",
           "image": "/images/drivers/piastri.svg",
-          "points": 220,
-          "races": 78,
-          "wins": 2
+          "points": 356,
+          "races": 21,
+          "wins": 6
         }
       ],
       "website": "https://www.mclaren.com/formula1",
@@ -161,83 +41,123 @@
       }
     },
     {
-      "id": "alpine",
-      "name": "Alpine",
-      "logo": "/images/logos/alpine.svg",
-      "country": "France",
-      "founded": 2021,
-      "principal": "Bruno Famin",
-      "powerUnit": "Renault",
-      "championships": 0,
-      "wins": 1,
-      "podiums": 8,
-      "accent_color": "#0093D0",
+      "id": "red-bull",
+      "name": "Red Bull Racing",
+      "logo": "/images/logos/red-bull.svg",
+      "country": "Austria",
+      "founded": 2005,
+      "principal": "Christian Horner",
+      "powerUnit": "Honda RBPT",
+      "championships": 5,
+      "wins": 124,
+      "podiums": 300,
+      "accent_color": "#0600EF",
       "drivers": [
         {
-          "id": "gasly",
-          "name": "Pierre Gasly",
-          "number": "10",
-          "nationality": "🇫🇷 French",
-          "image": "/images/drivers/gasly.svg",
-          "points": 156,
-          "races": 186,
-          "wins": 1
+          "id": "verstappen",
+          "name": "Max Verstappen",
+          "number": "1",
+          "nationality": "🇳🇱 Dutch",
+          "image": "/images/drivers/verstappen.svg",
+          "points": 321,
+          "races": 21,
+          "wins": 6
         },
         {
-          "id": "ocon",
-          "name": "Esteban Ocon",
-          "number": "31",
-          "nationality": "🇫🇷 French",
-          "image": "/images/drivers/ocon.svg",
-          "points": 95,
-          "races": 156,
-          "wins": 1
-        }
-      ],
-      "website": "https://www.alpinef1team.com",
-      "social": {
-        "twitter": "https://twitter.com/AlpineF1Team",
-        "instagram": "https://instagram.com/alpinef1team"
-      }
-    },
-    {
-      "id": "aston-martin",
-      "name": "Aston Martin",
-      "logo": "/images/logos/aston-martin.svg",
-      "country": "United Kingdom",
-      "founded": 2018,
-      "principal": "Mike Krack",
-      "powerUnit": "Mercedes",
-      "championships": 0,
-      "wins": 1,
-      "podiums": 4,
-      "accent_color": "#006F62",
-      "drivers": [
-        {
-          "id": "alonso",
-          "name": "Fernando Alonso",
-          "number": "14",
-          "nationality": "🇪🇸 Spanish",
-          "image": "/images/drivers/alonso.svg",
-          "points": 206,
-          "races": 379,
-          "wins": 32
-        },
-        {
-          "id": "stroll",
-          "name": "Lance Stroll",
-          "number": "18",
-          "nationality": "🇨🇦 Canadian",
-          "image": "/images/drivers/stroll.svg",
-          "points": 48,
-          "races": 124,
+          "id": "tsunoda",
+          "name": "Yuki Tsunoda",
+          "number": "22",
+          "nationality": "🇯🇵 Japanese",
+          "image": "/images/drivers/tsunoda.svg",
+          "points": 37,
+          "races": 21,
           "wins": 0
         }
       ],
-      "website": "https://www.astonmartinf1.com",
+      "website": "https://www.redbullracing.com",
       "social": {
-        "twitter": "https://twitter.com/AstonMartinF1",
-        "instagram": "https://instagram.com/astonmartinf1"
+        "twitter": "https://twitter.com/redbullracing",
+        "instagram": "https://instagram.com/redbullracing"
+      }
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "logo": "/images/logos/ferrari.svg",
+      "country": "Italy",
+      "founded": 1950,
+      "principal": "Fred Vasseur",
+      "powerUnit": "Ferrari",
+      "championships": 16,
+      "wins": 248,
+      "podiums": 820,
+      "accent_color": "#FF1801",
+      "drivers": [
+        {
+          "id": "hamilton",
+          "name": "Lewis Hamilton",
+          "number": "44",
+          "nationality": "🇬🇧 British",
+          "image": "/images/drivers/hamilton.svg",
+          "points": 280,
+          "races": 21,
+          "wins": 4
+        },
+        {
+          "id": "leclerc",
+          "name": "Charles Leclerc",
+          "number": "16",
+          "nationality": "🇲🇨 Monégasque",
+          "image": "/images/drivers/leclerc.svg",
+          "points": 255,
+          "races": 21,
+          "wins": 3
+        }
+      ],
+      "website": "https://www.ferrari.com/en/formula1",
+      "social": {
+        "twitter": "https://twitter.com/Scuderiaferrari",
+        "instagram": "https://instagram.com/scuderiaferrari"
+      }
+    },
+    {
+      "id": "mercedes",
+      "name": "Mercedes AMG F1",
+      "logo": "/images/logos/mercedes.svg",
+      "country": "Germany",
+      "founded": 1954,
+      "principal": "Toto Wolff",
+      "powerUnit": "Mercedes",
+      "championships": 8,
+      "wins": 128,
+      "podiums": 340,
+      "accent_color": "#00D4BE",
+      "drivers": [
+        {
+          "id": "russell",
+          "name": "George Russell",
+          "number": "63",
+          "nationality": "🇬🇧 British",
+          "image": "/images/drivers/russell.svg",
+          "points": 215,
+          "races": 21,
+          "wins": 2
+        },
+        {
+          "id": "antonelli",
+          "name": "Kimi Antonelli",
+          "number": "31",
+          "nationality": "🇮🇹 Italian",
+          "image": "/images/drivers/antonelli.svg",
+          "points": 131,
+          "races": 21,
+          "wins": 0
+        }
+      ],
+      "website": "https://mercedesamgf1.com",
+      "social": {
+        "twitter": "https://twitter.com/MercedesAMGF1",
+        "instagram": "https://instagram.com/mercedesf1"
       }
     },
     {
@@ -254,22 +174,22 @@
       "accent_color": "#005AFF",
       "drivers": [
         {
+          "id": "sainz",
+          "name": "Carlos Sainz Jr",
+          "number": "55",
+          "nationality": "🇪🇸 Spanish",
+          "image": "/images/drivers/sainz.svg",
+          "points": 92,
+          "races": 21,
+          "wins": 1
+        },
+        {
           "id": "albon",
           "name": "Alexander Albon",
           "number": "23",
           "nationality": "🇹🇭 Thai",
           "image": "/images/drivers/albon.svg",
-          "points": 37,
-          "races": 87,
-          "wins": 0
-        },
-        {
-          "id": "sargeant",
-          "name": "Logan Sargeant",
-          "number": "2",
-          "nationality": "🇺🇸 American",
-          "image": "/images/drivers/sargeant.svg",
-          "points": 0,
+          "points": 19,
           "races": 21,
           "wins": 0
         }
@@ -281,88 +201,8 @@
       }
     },
     {
-      "id": "alfa-romeo",
-      "name": "Alfa Romeo",
-      "logo": "/images/logos/alfa-romeo.svg",
-      "country": "Switzerland",
-      "founded": 2021,
-      "principal": "Frederic Vasseur",
-      "powerUnit": "Ferrari",
-      "championships": 0,
-      "wins": 0,
-      "podiums": 12,
-      "accent_color": "#900000",
-      "drivers": [
-        {
-          "id": "bottas",
-          "name": "Valtteri Bottas",
-          "number": "77",
-          "nationality": "🇫🇮 Finnish",
-          "image": "/images/drivers/bottas.svg",
-          "points": 98,
-          "races": 203,
-          "wins": 10
-        },
-        {
-          "id": "zhou",
-          "name": "Zhou Guanyu",
-          "number": "24",
-          "nationality": "🇨🇳 Chinese",
-          "image": "/images/drivers/zhou.svg",
-          "points": 12,
-          "races": 42,
-          "wins": 0
-        }
-      ],
-      "website": "https://www.alfaromeo.com/experience/f1",
-      "social": {
-        "twitter": "https://twitter.com/AlfaRomeoF1",
-        "instagram": "https://instagram.com/alfaromeorf1"
-      }
-    },
-    {
-      "id": "haas",
-      "name": "Haas",
-      "logo": "/images/logos/haas.svg",
-      "country": "United States",
-      "founded": 2016,
-      "principal": "Guenther Steiner",
-      "powerUnit": "Ferrari",
-      "championships": 0,
-      "wins": 0,
-      "podiums": 0,
-      "accent_color": "#FFFFFF",
-      "drivers": [
-        {
-          "id": "magnussen",
-          "name": "Kevin Magnussen",
-          "number": "20",
-          "nationality": "🇩🇰 Danish",
-          "image": "/images/drivers/magnussen.svg",
-          "points": 22,
-          "races": 212,
-          "wins": 0
-        },
-        {
-          "id": "hulkenberg",
-          "name": "Nico Hülkenberg",
-          "number": "27",
-          "nationality": "🇩🇪 German",
-          "image": "/images/drivers/hulkenberg.svg",
-          "points": 27,
-          "races": 201,
-          "wins": 0
-        }
-      ],
-      "website": "https://www.haasf1team.com",
-      "social": {
-        "twitter": "https://twitter.com/HaasF1Team",
-        "instagram": "https://instagram.com/haasf1team"
-      }
-    },
-    {
-      "id": "alpha-tauri",
-      "name": "Alpha Tauri",
+      "id": "racing-bulls",
+      "name": "Racing Bulls",
       "logo": "/images/logos/alpha-tauri.svg",
       "country": "Italy",
       "founded": 2020,
@@ -374,30 +214,190 @@
       "accent_color": "#2B4562",
       "drivers": [
         {
-          "id": "tsunoda",
-          "name": "Yuki Tsunoda",
-          "number": "22",
-          "nationality": "🇯🇵 Japanese",
-          "image": "/images/drivers/tsunoda.svg",
-          "points": 42,
-          "races": 85,
+          "id": "lawson",
+          "name": "Liam Lawson",
+          "number": "30",
+          "nationality": "🇳🇿 New Zealand",
+          "image": "/images/drivers/lawson.svg",
+          "points": 52,
+          "races": 21,
           "wins": 0
         },
         {
-          "id": "ricciardo",
-          "name": "Daniel Ricciardo",
-          "number": "3",
-          "nationality": "🇦🇺 Australian",
-          "image": "/images/drivers/ricciardo.svg",
-          "points": 535,
-          "races": 372,
-          "wins": 8
+          "id": "hadjar",
+          "name": "Isack Hadjar",
+          "number": "32",
+          "nationality": "🇦🇪 Emirati",
+          "image": "/images/drivers/hadjar.svg",
+          "points": 28,
+          "races": 21,
+          "wins": 0
         }
       ],
-      "website": "https://www.alphatauri.com",
+      "website": "https://www.racingbulls.com",
       "social": {
-        "twitter": "https://twitter.com/AlphaTauriF1",
-        "instagram": "https://instagram.com/alphatauri"
+        "twitter": "https://twitter.com/RacingBullsF1",
+        "instagram": "https://instagram.com/racingbulls"
+      }
+    },
+    {
+      "id": "aston-martin",
+      "name": "Aston Martin",
+      "logo": "/images/logos/aston-martin.svg",
+      "country": "United Kingdom",
+      "founded": 2018,
+      "principal": "Mike Krack",
+      "powerUnit": "Mercedes",
+      "championships": 0,
+      "wins": 1,
+      "podiums": 6,
+      "accent_color": "#006F62",
+      "drivers": [
+        {
+          "id": "alonso",
+          "name": "Fernando Alonso",
+          "number": "14",
+          "nationality": "🇪🇸 Spanish",
+          "image": "/images/drivers/alonso.svg",
+          "points": 49,
+          "races": 21,
+          "wins": 0
+        },
+        {
+          "id": "stroll",
+          "name": "Lance Stroll",
+          "number": "18",
+          "nationality": "🇨🇦 Canadian",
+          "image": "/images/drivers/stroll.svg",
+          "points": 20,
+          "races": 21,
+          "wins": 0
+        }
+      ],
+      "website": "https://www.astonmartinf1.com",
+      "social": {
+        "twitter": "https://twitter.com/AstonMartinF1",
+        "instagram": "https://instagram.com/astonmartinf1"
+      }
+    },
+    {
+      "id": "haas",
+      "name": "Haas F1",
+      "logo": "/images/logos/haas.svg",
+      "country": "United States",
+      "founded": 2016,
+      "principal": "Ayao Komatsu",
+      "powerUnit": "Ferrari",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 1,
+      "accent_color": "#FFFFFF",
+      "drivers": [
+        {
+          "id": "ocon",
+          "name": "Esteban Ocon",
+          "number": "31",
+          "nationality": "🇫🇷 French",
+          "image": "/images/drivers/ocon.svg",
+          "points": 45,
+          "races": 21,
+          "wins": 0
+        },
+        {
+          "id": "bearman",
+          "name": "Oliver Bearman",
+          "number": "79",
+          "nationality": "🇬🇧 British",
+          "image": "/images/drivers/bearman.svg",
+          "points": 19,
+          "races": 21,
+          "wins": 0
+        }
+      ],
+      "website": "https://www.haasf1team.com",
+      "social": {
+        "twitter": "https://twitter.com/HaasF1Team",
+        "instagram": "https://instagram.com/haasf1team"
+      }
+    },
+    {
+      "id": "stake",
+      "name": "Stake F1 Team Kick Sauber",
+      "logo": "/images/logos/alfa-romeo.svg",
+      "country": "Switzerland",
+      "founded": 2021,
+      "principal": "Amedeo Felisa",
+      "powerUnit": "Ferrari",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 12,
+      "accent_color": "#900000",
+      "drivers": [
+        {
+          "id": "hulkenberg",
+          "name": "Nico Hülkenberg",
+          "number": "27",
+          "nationality": "🇩🇪 German",
+          "image": "/images/drivers/hulkenberg.svg",
+          "points": 41,
+          "races": 21,
+          "wins": 0
+        },
+        {
+          "id": "bortoleto",
+          "name": "Gabriel Bortoleto",
+          "number": "5",
+          "nationality": "🇧🇷 Brazilian",
+          "image": "/images/drivers/bortoleto.svg",
+          "points": 20,
+          "races": 21,
+          "wins": 0
+        }
+      ],
+      "website": "https://www.stakef1team.com",
+      "social": {
+        "twitter": "https://twitter.com/stakef1team",
+        "instagram": "https://instagram.com/stakef1team"
+      }
+    },
+    {
+      "id": "alpine",
+      "name": "Alpine F1 Team",
+      "logo": "/images/logos/alpine.svg",
+      "country": "France",
+      "founded": 2021,
+      "principal": "Bruno Famin",
+      "powerUnit": "Renault",
+      "championships": 0,
+      "wins": 1,
+      "podiums": 8,
+      "accent_color": "#0093D0",
+      "drivers": [
+        {
+          "id": "gasly",
+          "name": "Pierre Gasly",
+          "number": "10",
+          "nationality": "🇫🇷 French",
+          "image": "/images/drivers/gasly.svg",
+          "points": 16,
+          "races": 21,
+          "wins": 0
+        },
+        {
+          "id": "colapinto",
+          "name": "Franco Colapinto",
+          "number": "43",
+          "nationality": "🇦🇷 Argentine",
+          "image": "/images/drivers/colapinto.svg",
+          "points": 4,
+          "races": 21,
+          "wins": 0
+        }
+      ],
+      "website": "https://www.alpinef1team.com",
+      "social": {
+        "twitter": "https://twitter.com/AlpineF1Team",
+        "instagram": "https://instagram.com/alpinef1team"
       }
     }
   ]
