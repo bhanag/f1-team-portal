@@ -28,7 +28,7 @@
           "name": "George Russell",
           "number": "63",
           "nationality": "🇬🇧 British",
-          "image": "/images/drivers/russell.jpg",
+          "image": "/images/drivers/russell.svg",
           "points": 178,
           "races": 98,
           "wins": 2
@@ -58,7 +58,7 @@
           "name": "Max Verstappen",
           "number": "1",
           "nationality": "🇳🇱 Dutch",
-          "image": "/images/drivers/verstappen.jpg",
+          "image": "/images/drivers/verstappen.svg",
           "points": 403,
           "races": 256,
           "wins": 58
@@ -68,7 +68,7 @@
           "name": "Sergio Pérez",
           "number": "11",
           "nationality": "🇲🇽 Mexican",
-          "image": "/images/drivers/perez.jpg",
+          "image": "/images/drivers/perez.svg",
           "points": 156,
           "races": 312,
           "wins": 6
@@ -98,7 +98,7 @@
           "name": "Charles Leclerc",
           "number": "16",
           "nationality": "🇲🇨 Monégasque",
-          "image": "/images/drivers/leclerc.jpg",
+          "image": "/images/drivers/leclerc.svg",
           "points": 290,
           "races": 156,
           "wins": 5
@@ -108,7 +108,7 @@
           "name": "Carlos Sainz",
           "number": "55",
           "nationality": "🇪🇸 Spanish",
-          "image": "/images/drivers/sainz.jpg",
+          "image": "/images/drivers/sainz.svg",
           "points": 234,
           "races": 263,
           "wins": 3
@@ -138,7 +138,7 @@
           "name": "Lando Norris",
           "number": "4",
           "nationality": "🇬🇧 British",
-          "image": "/images/drivers/norris.jpg",
+          "image": "/images/drivers/norris.svg",
           "points": 260,
           "races": 145,
           "wins": 1
@@ -148,7 +148,7 @@
           "name": "Oscar Piastri",
           "number": "81",
           "nationality": "🇦🇺 Australian",
-          "image": "/images/drivers/piastri.jpg",
+          "image": "/images/drivers/piastri.svg",
           "points": 220,
           "races": 78,
           "wins": 2
@@ -178,7 +178,7 @@
           "name": "Pierre Gasly",
           "number": "10",
           "nationality": "🇫🇷 French",
-          "image": "/images/drivers/gasly.jpg",
+          "image": "/images/drivers/gasly.svg",
           "points": 156,
           "races": 186,
           "wins": 1
@@ -188,7 +188,7 @@
           "name": "Esteban Ocon",
           "number": "31",
           "nationality": "🇫🇷 French",
-          "image": "/images/drivers/ocon.jpg",
+          "image": "/images/drivers/ocon.svg",
           "points": 95,
           "races": 156,
           "wins": 1
@@ -218,7 +218,7 @@
           "name": "Fernando Alonso",
           "number": "14",
           "nationality": "🇪🇸 Spanish",
-          "image": "/images/drivers/alonso.jpg",
+          "image": "/images/drivers/alonso.svg",
           "points": 206,
           "races": 379,
           "wins": 32
@@ -228,7 +228,7 @@
           "name": "Lance Stroll",
           "number": "18",
           "nationality": "🇨🇦 Canadian",
-          "image": "/images/drivers/stroll.jpg",
+          "image": "/images/drivers/stroll.svg",
           "points": 48,
           "races": 124,
           "wins": 0
@@ -258,7 +258,7 @@
           "name": "Alexander Albon",
           "number": "23",
           "nationality": "🇹🇭 Thai",
-          "image": "/images/drivers/albon.jpg",
+          "image": "/images/drivers/albon.svg",
           "points": 37,
           "races": 87,
           "wins": 0
@@ -268,7 +268,7 @@
           "name": "Logan Sargeant",
           "number": "2",
           "nationality": "🇺🇸 American",
-          "image": "/images/drivers/sargeant.jpg",
+          "image": "/images/drivers/sargeant.svg",
           "points": 0,
           "races": 21,
           "wins": 0
@@ -298,7 +298,7 @@
           "name": "Valtteri Bottas",
           "number": "77",
           "nationality": "🇫🇮 Finnish",
-          "image": "/images/drivers/bottas.jpg",
+          "image": "/images/drivers/bottas.svg",
           "points": 98,
           "races": 203,
           "wins": 10
@@ -308,7 +308,7 @@
           "name": "Zhou Guanyu",
           "number": "24",
           "nationality": "🇨🇳 Chinese",
-          "image": "/images/drivers/zhou.jpg",
+          "image": "/images/drivers/zhou.svg",
           "points": 12,
           "races": 42,
           "wins": 0
@@ -338,7 +338,7 @@
           "name": "Kevin Magnussen",
           "number": "20",
           "nationality": "🇩🇰 Danish",
-          "image": "/images/drivers/magnussen.jpg",
+          "image": "/images/drivers/magnussen.svg",
           "points": 22,
           "races": 212,
           "wins": 0
@@ -348,7 +348,7 @@
           "name": "Nico Hülkenberg",
           "number": "27",
           "nationality": "🇩🇪 German",
-          "image": "/images/drivers/hulkenberg.jpg",
+          "image": "/images/drivers/hulkenberg.svg",
           "points": 27,
           "races": 201,
           "wins": 0
@@ -378,7 +378,7 @@
           "name": "Yuki Tsunoda",
           "number": "22",
           "nationality": "🇯🇵 Japanese",
-          "image": "/images/drivers/tsunoda.jpg",
+          "image": "/images/drivers/tsunoda.svg",
           "points": 42,
           "races": 85,
           "wins": 0
@@ -388,7 +388,7 @@
           "name": "Daniel Ricciardo",
           "number": "3",
           "nationality": "🇦🇺 Australian",
-          "image": "/images/drivers/ricciardo.jpg",
+          "image": "/images/drivers/ricciardo.svg",
           "points": 535,
           "races": 372,
           "wins": 8
