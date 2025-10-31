@@ -1,0 +1,1064 @@
+/* ============================================
+   F1 TEAM PORTAL - STYLES
+   Comprehensive CSS for all components
+   ============================================ */
+
+/* ============================================
+   1. CSS VARIABLES
+   ============================================ */
+:root {
+    /* Colors - Dark Mode Default */
+    --color-dark-primary: #121212;
+    --color-dark-secondary: #1A1A1A;
+    --color-dark-tertiary: #2A2A2A;
+    --color-accent-red: #FF1801;
+    --color-text-light: #FFFFFF;
+    --color-text-muted: #B0B0B0;
+    --color-border: #333333;
+
+    /* Colors - Light Mode */
+    --color-light-primary: #FFFFFF;
+    --color-light-secondary: #F5F5F5;
+    --color-light-tertiary: #EEEEEE;
+    --color-light-text: #1A1A1A;
+    --color-light-muted: #666666;
+
+    /* Team-specific accent colors */
+    --color-mercedes: #00D4BE;
+    --color-red-bull: #0600EF;
+    --color-ferrari: #FF1801;
+    --color-mclaren: #FF8700;
+    --color-alpine: #0093D0;
+    --color-aston-martin: #006F62;
+    --color-williams: #005AFF;
+    --color-alfa-romeo: #900000;
+    --color-haas: #FFFFFF;
+    --color-alpha-tauri: #2B4562;
+
+    /* Typography */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto Condensed', sans-serif;
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 18px;
+    --font-size-xl: 24px;
+    --font-size-xxl: 32px;
+    --font-size-hero: 48px;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+
+    /* Border Radius */
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+
+    /* Shadow */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+    /* Transitions */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+
+    /* Breakpoints */
+    --breakpoint-mobile: 767px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+
+    /* Z-index */
+    --z-navbar: 1000;
+    --z-modal: 2000;
+}
+
+/* ============================================
+   2. RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-secondary), sans-serif;
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Light Mode Override */
+body.light-mode {
+    background-color: var(--color-light-primary);
+    color: var(--color-light-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary), sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    color: var(--color-accent-red);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+a:hover {
+    color: #FF5500;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: all var(--transition-normal);
+}
+
+input {
+    font-family: inherit;
+}
+
+/* ============================================
+   3. THEME STYLES
+   ============================================ */
+
+/* Dark Mode (Default) */
+body {
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+}
+
+body.light-mode {
+    background-color: var(--color-light-primary);
+    color: var(--color-light-text);
+}
+
+body.light-mode .navbar {
+    background-color: var(--color-light-secondary);
+    border-bottom-color: var(--color-light-tertiary);
+}
+
+body.light-mode .navbar-nav a,
+body.light-mode .nav-link {
+    color: var(--color-light-text);
+}
+
+body.light-mode .search-input {
+    background-color: var(--color-light-tertiary);
+    color: var(--color-light-text);
+    border-color: var(--color-light-muted);
+}
+
+body.light-mode .search-input::placeholder {
+    color: var(--color-light-muted);
+}
+
+body.light-mode .hero {
+    background-color: #F0F0F0;
+}
+
+body.light-mode .teams-section {
+    background-color: var(--color-light-secondary);
+}
+
+body.light-mode .team-card {
+    background-color: var(--color-light-primary);
+    border-color: var(--color-light-tertiary);
+    color: var(--color-light-text);
+}
+
+body.light-mode .team-card:hover {
+    box-shadow: 0 0 20px rgba(255, 24, 1, 0.3);
+}
+
+body.light-mode .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.light-mode .modal-container {
+    background-color: var(--color-light-primary);
+    color: var(--color-light-text);
+}
+
+body.light-mode .footer {
+    background-color: var(--color-light-tertiary);
+    border-top-color: var(--color-light-muted);
+}
+
+/* ============================================
+   4. HEADER / NAVBAR
+   ============================================ */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-dark-primary);
+    border-bottom: 1px solid var(--color-border);
+    padding: 15px 30px;
+    z-index: var(--z-navbar);
+    box-shadow: none;
+    transition: box-shadow var(--transition-normal);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.navbar-logo {
+    flex-shrink: 0;
+}
+
+.logo-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-text {
+    font-family: var(--font-primary), sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-accent-red);
+    letter-spacing: -1px;
+}
+
+.logo-subtext {
+    font-family: var(--font-secondary), sans-serif;
+    font-size: 10px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: var(--spacing-xl);
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link {
+    color: var(--color-text-light);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-normal);
+}
+
+.nav-link:hover {
+    color: var(--color-accent-red);
+    background-color: rgba(255, 24, 1, 0.1);
+}
+
+.search-container {
+    position: relative;
+    flex: 0 1 200px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    background-color: var(--color-dark-tertiary);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-small);
+    transition: all var(--transition-normal);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-accent-red);
+    box-shadow: 0 0 8px rgba(255, 24, 1, 0.2);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 16px;
+}
+
+.dark-mode-toggle {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    padding: 8px 12px;
+    border-radius: var(--border-radius-md);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.dark-mode-toggle:hover {
+    background-color: var(--color-dark-tertiary);
+    border-color: var(--color-accent-red);
+}
+
+.mode-icon {
+    transition: transform var(--transition-normal);
+}
+
+/* ============================================
+   5. HERO SECTION
+   ============================================ */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-text-light);
+    animation: slideUp 0.8s ease-out;
+}
+
+.hero-headline {
+    font-size: var(--font-size-hero);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-large);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xl);
+    font-weight: 400;
+}
+
+.cta-button {
+    background-color: var(--color-accent-red);
+    color: var(--color-text-light);
+    padding: 14px 40px;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    border-radius: var(--border-radius-md);
+    border: 2px solid var(--color-accent-red);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--color-accent-red);
+    transform: scale(1.05);
+}
+
+/* ============================================
+   6. TEAMS SECTION
+   ============================================ */
+.teams-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--color-dark-primary);
+    transition: background-color var(--transition-normal);
+}
+
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.section-title {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    color: var(--color-text-light);
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-lg);
+    min-height: 400px;
+}
+
+.teams-loading {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-large);
+    color: var(--color-text-muted);
+    min-height: 300px;
+}
+
+/* Team Card */
+.team-card {
+    background-color: var(--color-dark-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--team-color, var(--color-accent-red));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
+}
+
+.team-card:hover::before {
+    transform: scaleX(1);
+}
+
+.team-card:hover {
+    border-color: var(--team-color, var(--color-accent-red));
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 24, 1, 0.2);
+    background-color: var(--color-dark-tertiary);
+}
+
+.team-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-sm);
+    padding: 8px;
+}
+
+.team-name {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-light);
+}
+
+.team-country {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+}
+
+.view-details-button {
+    background-color: var(--color-accent-red);
+    color: var(--color-text-light);
+    padding: 10px 16px;
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    border-radius: var(--border-radius-sm);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-normal);
+    margin-top: auto;
+}
+
+.view-details-button:hover {
+    background-color: #FF5500;
+    transform: scale(1.05);
+}
+
+/* ============================================
+   7. MODAL STYLES
+   ============================================ */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    animation: fadeIn var(--transition-normal);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-container {
+    background-color: var(--color-dark-secondary);
+    border-radius: var(--border-radius-lg);
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp var(--transition-normal);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.modal-close:hover {
+    color: var(--color-accent-red);
+    transform: rotate(90deg);
+}
+
+.modal-content {
+    padding: var(--spacing-xl);
+}
+
+/* Modal Banner */
+.modal-banner {
+    background: linear-gradient(135deg, var(--team-color, var(--color-accent-red)), rgba(255, 24, 1, 0.3));
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    margin: calc(-1 * var(--spacing-xl)) calc(-1 * var(--spacing-xl)) var(--spacing-xl);
+    text-align: center;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.modal-banner-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto var(--spacing-md);
+}
+
+.modal-banner-title {
+    font-size: var(--font-size-xxl);
+    color: var(--color-text-light);
+    font-weight: 700;
+}
+
+/* Modal Grid (Info + Drivers) */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.modal-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.modal-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--color-dark-tertiary);
+    border-left: 4px solid var(--team-color, var(--color-accent-red));
+    border-radius: var(--border-radius-sm);
+}
+
+.modal-info-label {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-info-value {
+    font-size: var(--font-size-large);
+    color: var(--color-text-light);
+    font-weight: 700;
+}
+
+/* Drivers Section */
+.drivers-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.driver-card {
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.driver-image {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    flex-shrink: 0;
+}
+
+.driver-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.driver-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--team-color, var(--color-accent-red));
+}
+
+.driver-name {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--color-text-light);
+}
+
+.driver-nationality {
+    font-size: 16px;
+    color: var(--color-text-muted);
+}
+
+.driver-stats {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+}
+
+.driver-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.driver-stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.driver-stat-value {
+    font-weight: 700;
+    color: var(--color-text-light);
+}
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.modal-link-button {
+    background-color: var(--team-color, var(--color-accent-red));
+    color: var(--color-text-light);
+    padding: 12px 24px;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    display: inline-block;
+}
+
+.modal-link-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 24, 1, 0.3);
+}
+
+/* ============================================
+   8. FOOTER
+   ============================================ */
+.footer {
+    background-color: var(--color-dark-secondary);
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    margin-top: var(--spacing-xxl);
+    transition: background-color var(--transition-normal);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.footer-title {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-text {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.footer-links li a {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    transition: all var(--transition-normal);
+}
+
+.footer-links li a:hover {
+    color: var(--color-accent-red);
+    margin-left: 4px;
+}
+
+/* ============================================
+   9. ANIMATIONS
+   ============================================ */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 24, 1, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 24, 1, 0.4);
+    }
+}
+
+/* ============================================
+   10. RESPONSIVE DESIGN
+   ============================================ */
+
+/* TABLET (768px - 1023px) */
+@media (max-width: 1023px) {
+    .navbar-container {
+        gap: var(--spacing-md);
+    }
+
+    .navbar-nav {
+        gap: var(--spacing-md);
+    }
+
+    .search-container {
+        flex: 0 1 150px;
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    .hero-headline {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .teams-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE (≤767px) */
+@media (max-width: 767px) {
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .navbar-container {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .navbar-nav {
+        order: 3;
+        width: 100%;
+        gap: var(--spacing-md);
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding-top: var(--spacing-md);
+        border-top: 1px solid var(--color-border);
+    }
+
+    .nav-link {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .search-container {
+        flex: 0 1 100%;
+        order: 2;
+    }
+
+    .search-input {
+        font-size: 14px;
+        padding: 8px 35px 8px 12px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .logo-subtext {
+        font-size: 8px;
+    }
+
+    .dark-mode-toggle {
+        padding: 6px 10px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        order: 1;
+    }
+
+    .hero {
+        height: 300px;
+        padding: var(--spacing-lg);
+    }
+
+    .hero-headline {
+        font-size: 28px;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .teams-section {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .teams-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .section-title {
+        font-size: 24px;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .modal-container {
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .modal-content {
+        padding: var(--spacing-lg);
+    }
+
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 28px;
+    }
+
+    .modal-banner {
+        margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-lg);
+        padding: var(--spacing-lg);
+    }
+
+    .modal-banner-logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .modal-banner-title {
+        font-size: 24px;
+    }
+
+    .modal-grid {
+        gap: var(--spacing-md);
+    }
+
+    .modal-info-item {
+        padding: var(--spacing-md);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .driver-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .driver-image {
+        width: 100px;
+        height: 120px;
+    }
+
+    .driver-stats {
+        justify-content: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .footer {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* EXTRA SMALL (≤480px) */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    .hero-headline {
+        font-size: 24px;
+    }
+
+    .hero-subtitle {
+        font-size: 13px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .team-card {
+        padding: var(--spacing-md);
+    }
+}
