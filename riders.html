@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGP Riders - 2025 Championship</title>
+    <meta name="description" content="Complete list of MotoGP 2025 riders, their statistics, teams, and championship performance">
+    <meta name="keywords" content="MotoGP, riders, 2025, championship, statistics, teams, riders list">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+
+    <!-- Theme -->
+    <script>
+        const theme = localStorage.getItem('motogp-theme') ||
+                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading riders...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span style="font-size: 24px;">🏍️</span>
+                </div>
+                <span>MotoGP Portal</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="teams.html" class="nav-link">Teams</a></li>
+                    <li><a href="riders.html" class="nav-link active">Riders</a></li>
+                    <li><a href="calendar.html" class="nav-link">Calendar</a></li>
+                    <li><a href="standings.html" class="nav-link">Standings</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Theme -->
+            <div class="header-actions">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search riders..." id="searchInput">
+                </div>
+
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
+            <li><a href="riders.html" class="mobile-nav-link active">Riders</a></li>
+            <li><a href="calendar.html" class="mobile-nav-link">Calendar</a></li>
+            <li><a href="standings.html" class="mobile-nav-link">Standings</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Page Header -->
+        <section class="section section-sm">
+            <div class="container text-center">
+                <h1 class="page-title text-4xl font-bold mb-4">MotoGP 2025 Riders</h1>
+                <p class="page-subtitle text-xl text-secondary mb-6">Meet all 24 riders competing in the 2025 MotoGP World Championship</p>
+
+                <!-- Quick Stats -->
+                <div class="stats-ribbon flex justify-center gap-8 mb-8">
+                    <div class="stat-item">
+                        <span class="stat-value">24</span>
+                        <span class="stat-label">Riders</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Teams</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">17</span>
+                        <span class="stat-label">Nationalities</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Manufacturers</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Bar -->
+        <section class="section-sm">
+            <div class="container">
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label class="filter-label">Filter by Team:</label>
+                        <select class="form-select" id="teamFilter">
+                            <option value="">All Teams</option>
+                            <option value="ducati-lenovo">Ducati Lenovo Team</option>
+                            <option value="aprilia-racing">Aprilia Racing</option>
+                            <option value="monster-yamaha">Monster Energy Yamaha</option>
+                            <option value="redbull-ktm">Red Bull KTM Factory Racing</option>
+                            <option value="honda-castrol">Honda HRC Castrol</option>
+                            <option value="lcr-honda">LCR Honda</option>
+                            <option value="gresini-racing">BK8 Gresini Racing</option>
+                            <option value="vr46-racing">Pertamina Enduro VR46</option>
+                            <option value="prima-pramac">Prima Pramac Yamaha</option>
+                            <option value="ktm-tech3">Red Bull KTM Tech3</option>
+                            <option value="trackhouse">Trackhouse MotoGP</option>
+                            <option value="rnf-racing">RNF Racing</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Filter by Nationality:</label>
+                        <select class="form-select" id="nationalityFilter">
+                            <option value="">All Nationalities</option>
+                            <option value="Spain">Spain 🇪🇸</option>
+                            <option value="Italy">Italy 🇮🇹</option>
+                            <option value="France">France 🇫🇷</option>
+                            <option value="Australia">Australia 🇦🇺</option>
+                            <option value="Portugal">Portugal 🇵🇹</option>
+                            <option value="Argentina">Argentina 🇦🇷</option>
+                            <option value="Thailand">Thailand 🇹🇭</option>
+                            <option value="Japan">Japan 🇯🇵</option>
+                            <option value="South Africa">South Africa 🇿🇦</option>
+                            <option value="Germany">Germany 🇩🇪</option>
+                            <option value="Netherlands">Netherlands 🇳🇱</option>
+                            <option value="Finland">Finland 🇫🇮</option>
+                            <option value="UK">United Kingdom 🇬🇧</option>
+                            <option value="Austria">Austria 🇦🇹</option>
+                            <option value="India">India 🇮🇳</option>
+                            <option value="Malaysia">Malaysia 🇲🇾</option>
+                            <option value="USA">United States 🇺🇸</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Sort by:</label>
+                        <select class="form-select" id="sortFilter">
+                            <option value="number">Rider Number</option>
+                            <option value="name">Name (A-Z)</option>
+                            <option value="team">Team</option>
+                            <option value="points">Championship Points</option>
+                            <option value="wins">Career Wins</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">View:</label>
+                        <div class="view-toggle">
+                            <button class="btn btn-outline btn-sm view-btn active" data-view="grid">
+                                <span>⊞</span> Grid
+                            </button>
+                            <button class="btn btn-outline btn-sm view-btn" data-view="list">
+                                <span>☰</span> List
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Riders Grid -->
+        <section class="section">
+            <div class="container">
+                <div class="riders-container" id="ridersContainer">
+                    <!-- Loading State -->
+                    <div class="riders-loading" id="ridersLoading">
+                        <div class="loading-grid grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3">
+                            <!-- Skeleton Cards -->
+                            <div class="loading-skeleton">
+                                <div class="skeleton-avatar"></div>
+                                <div class="skeleton-text large"></div>
+                                <div class="skeleton-text medium"></div>
+                            </div>
+                            <div class="loading-skeleton">
+                                <div class="skeleton-avatar"></div>
+                                <div class="skeleton-text large"></div>
+                                <div class="skeleton-text medium"></div>
+                            </div>
+                            <div class="loading-skeleton">
+                                <div class="skeleton-avatar"></div>
+                                <div class="skeleton-text large"></div>
+                                <div class="skeleton-text medium"></div>
+                            </div>
+                            <div class="loading-skeleton">
+                                <div class="skeleton-avatar"></div>
+                                <div class="skeleton-text large"></div>
+                                <div class="skeleton-text medium"></div>
+                            </div>
+                            <div class="loading-skeleton">
+                                <div class="skeleton-avatar"></div>
+                                <div class="skeleton-text large"></div>
+                                <div class="skeleton-text medium"></div>
+                            </div>
+                            <div class="loading-skeleton">
+                                <div class="skeleton-avatar"></div>
+                                <div class="skeleton-text large"></div>
+                                <div class="skeleton-text medium"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Riders Grid (populated by JavaScript) -->
+                    <div class="riders-grid grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3" id="ridersGrid" style="display: none;">
+                        <!-- Rider cards will be inserted here -->
+                    </div>
+
+                    <!-- No Results State -->
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <div class="text-center py-12">
+                            <div class="no-results-icon mb-4">
+                                <span style="font-size: 4rem;">🔍</span>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">No Riders Found</h3>
+                            <p class="text-secondary mb-4">Try adjusting your filters or search terms</p>
+                            <button class="btn btn-primary" onclick="resetFilters()">Reset Filters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Top Riders Standings -->
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Championship Leaders</h2>
+                    <p class="text-secondary text-lg">Top riders in the 2025 championship standings</p>
+                </div>
+
+                <div class="top-riders-preview" id="topRidersPreview">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading championship standings...</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <a href="standings.html" class="btn btn-outline btn-lg">View Full Standings</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rider Statistics Overview -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">2025 Season Statistics</h2>
+                    <p class="text-secondary text-lg">Key statistics and records from the current season</p>
+                </div>
+
+                <div class="stats-overview-grid grid grid-cols-2 grid-cols-md-4">
+                    <div class="stat-card text-center">
+                        <div class="stat-number">86</div>
+                        <div class="stat-label">Most Career Wins<br><small>(Marc Márquez)</small></div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Most World Titles<br><small>(Marc Márquez)</small></div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number">20</div>
+                        <div class="stat-label">Youngest Rider<br><small>(Fermín Aldeguer)</small></div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number">34</div>
+                        <div class="stat-label">Oldest Rider<br><small>(Johann Zarco)</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="teams.html" class="footer-link">Teams</a></li>
+                        <li><a href="riders.html" class="footer-link">Riders</a></li>
+                        <li><a href="calendar.html" class="footer-link">Calendar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Championship</h3>
+                    <ul class="footer-links">
+                        <li><a href="standings.html" class="footer-link">Standings</a></li>
+                        <li><a href="calendar.html" class="footer-link">Race Calendar</a></li>
+                        <li><a href="https://www.motogp.com" target="_blank" class="footer-link">Official MotoGP</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow MotoGP</h3>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/motogp" target="_blank" class="social-link" aria-label="YouTube">
+                            <span>📺</span>
+                        </a>
+                        <a href="https://www.instagram.com/motogp" target="_blank" class="social-link" aria-label="Instagram">
+                            <span>📷</span>
+                        </a>
+                        <a href="https://twitter.com/MotoGP" target="_blank" class="social-link" aria-label="Twitter">
+                            <span>🐦</span>
+                        </a>
+                        <a href="https://www.facebook.com/MotoGP" target="_blank" class="social-link" aria-label="Facebook">
+                            <span>📘</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p class="text-secondary text-sm">
+                        Complete information about all MotoGP riders, their statistics, teams, and championship performance for the 2025 season.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="text-muted text-sm">
+                    © 2025 MotoGP Team Portal | Data © MotoGP.com | For educational use only
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/cache-manager.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/riders.js"></script>
+
+    <!-- Riders Page Specific Script -->
+    <script>
+        /**
+         * Riders page specific functionality
+         */
+        let allRiders = [];
+        let allTeams = [];
+        let filteredRiders = [];
+        let currentView = 'grid';
+
+        async function initRidersPage() {
+            console.log('👨‍🦰 Initializing riders page...');
+
+            try {
+                // Load data
+                await loadRidersData();
+                await loadTeamsData();
+
+                // Initialize filters
+                initializeFilters();
+
+                // Initialize view toggle
+                initializeViewToggle();
+
+                // Load top riders preview
+                await loadTopRidersPreview();
+
+                console.log('✅ Riders page initialized successfully');
+
+            } catch (error) {
+                console.error('❌ Failed to initialize riders page:', error);
+                showError('Failed to load riders data. Please refresh the page.');
+            }
+        }
+
+        /**
+         * Load riders data
+         */
+        async function loadRidersData() {
+            const loadingEl = document.getElementById('ridersLoading');
+            const gridEl = document.getElementById('ridersGrid');
+            const noResultsEl = document.getElementById('noResults');
+
+            try {
+                // Get riders from cache or fetch
+                let riders = window.motoGPState.cache.riders;
+
+                if (!riders) {
+                    const dataFetcher = new DataFetcher();
+                    showLoading();
+                    riders = await dataFetcher.fetchRiders();
+                    hideLoading();
+                }
+
+                if (!riders || riders.length === 0) {
+                    throw new Error('No riders data available');
+                }
+
+                allRiders = riders;
+                filteredRiders = riders;
+
+                // Hide loading, show grid
+                loadingEl.style.display = 'none';
+                gridEl.style.display = 'grid';
+
+                // Render riders
+                renderRiders();
+
+            } catch (error) {
+                console.error('Failed to load riders:', error);
+                loadingEl.innerHTML = `
+                    <div class="error-message text-center">
+                        <p>Failed to load riders data. Please try refreshing the page.</p>
+                        <button class="btn btn-primary mt-4" onclick="location.reload()">Refresh Page</button>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * Load teams data
+         */
+        async function loadTeamsData() {
+            try {
+                let teams = window.motoGPState.cache.teams;
+
+                if (!teams) {
+                    const dataFetcher = new DataFetcher();
+                    teams = await dataFetcher.fetchTeams();
+                }
+
+                allTeams = teams || [];
+
+            } catch (error) {
+                console.error('Failed to load teams data:', error);
+            }
+        }
+
+        /**
+         * Render riders based on current filters and view
+         */
+        function renderRiders() {
+            const gridEl = document.getElementById('ridersGrid');
+            const noResultsEl = document.getElementById('noResults');
+
+            if (filteredRiders.length === 0) {
+                gridEl.style.display = 'none';
+                noResultsEl.style.display = 'block';
+                return;
+            }
+
+            gridEl.style.display = 'grid';
+            noResultsEl.style.display = 'none';
+
+            if (currentView === 'grid') {
+                renderGridView();
+            } else {
+                renderListView();
+            }
+        }
+
+        /**
+         * Render grid view
+         */
+        function renderGridView() {
+            const gridEl = document.getElementById('ridersGrid');
+
+            gridEl.className = 'riders-grid grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3';
+            gridEl.innerHTML = filteredRiders.map((rider, index) => `
+                <div class="rider-card fade-on-scroll"
+                     style="animation-delay: ${index * 0.05}s"
+                     onclick="navigateToRiderDetail('${rider.id}')">
+                    <div class="rider-header">
+                        <div class="rider-photo">
+                            <img src="${rider.photo}" alt="${rider.name}"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍🦰';"
+                                 loading="lazy">
+                        </div>
+                        <div class="rider-basic-info">
+                            <div class="rider-number">${rider.number}</div>
+                            <h3 class="rider-name">${rider.name}</h3>
+                            <p class="rider-nationality">${rider.flag} ${rider.nationality}</p>
+                        </div>
+                    </div>
+                    <div class="rider-body">
+                        <div class="rider-team">
+                            <span class="team-label">Team:</span>
+                            <span class="team-name">${getTeamName(rider.team)}</span>
+                        </div>
+                        <div class="rider-stats">
+                            <div class="rider-stat-grid grid grid-cols-3">
+                                <div class="rider-stat-item text-center">
+                                    <div class="rider-stat-value">${rider.career_wins}</div>
+                                    <div class="rider-stat-label">Wins</div>
+                                </div>
+                                <div class="rider-stat-item text-center">
+                                    <div class="rider-stat-value">${rider.career_podiums}</div>
+                                    <div class="rider-stat-label">Podiums</div>
+                                </div>
+                                <div class="rider-stat-item text-center">
+                                    <div class="rider-stat-value">${rider.world_championships}</div>
+                                    <div class="rider-stat-label">Titles</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rider-footer">
+                            <div class="rider-age">${rider.age} years old</div>
+                            <button class="btn btn-primary btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /**
+         * Render list view
+         */
+        function renderListView() {
+            const gridEl = document.getElementById('ridersGrid');
+
+            gridEl.className = 'riders-list';
+            gridEl.innerHTML = filteredRiders.map((rider, index) => `
+                <div class="rider-list-item card fade-on-scroll"
+                     style="animation-delay: ${index * 0.02}s">
+                    <div class="card-body">
+                        <div class="rider-list-content">
+                            <div class="rider-list-photo">
+                                <img src="${rider.photo}" alt="${rider.name}"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍🦰';"
+                                     loading="lazy">
+                            </div>
+                            <div class="rider-list-info">
+                                <div class="rider-list-header">
+                                    <span class="rider-list-number">${rider.number}</span>
+                                    <h3 class="rider-list-name">${rider.name}</h3>
+                                    <span class="rider-list-nationality">${rider.flag} ${rider.nationality}</span>
+                                </div>
+                                <div class="rider-list-details">
+                                    <p class="rider-list-team">${getTeamName(rider.team)}</p>
+                                    <div class="rider-list-stats">
+                                        <span class="stat-badge">Wins: ${rider.career_wins}</span>
+                                        <span class="stat-badge">Podiums: ${rider.career_podiums}</span>
+                                        <span class="stat-badge">Titles: ${rider.world_championships}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rider-list-actions">
+                                <button class="btn btn-primary" onclick="navigateToRiderDetail('${rider.id}')">
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /**
+         * Initialize filters
+         */
+        function initializeFilters() {
+            const teamFilter = document.getElementById('teamFilter');
+            const nationalityFilter = document.getElementById('nationalityFilter');
+            const sortFilter = document.getElementById('sortFilter');
+            const searchInput = document.getElementById('searchInput');
+
+            // Team filter
+            teamFilter.addEventListener('change', applyFilters);
+
+            // Nationality filter
+            nationalityFilter.addEventListener('change', applyFilters);
+
+            // Sort filter
+            sortFilter.addEventListener('change', applyFilters);
+
+            // Search filter
+            searchInput.addEventListener('input', debounce(applyFilters, 300));
+        }
+
+        /**
+         * Apply all filters
+         */
+        function applyFilters() {
+            const teamFilter = document.getElementById('teamFilter').value;
+            const nationalityFilter = document.getElementById('nationalityFilter').value.toLowerCase();
+            const sortFilter = document.getElementById('sortFilter').value;
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+
+            // Filter riders
+            filteredRiders = allRiders.filter(rider => {
+                const matchesTeam = !teamFilter || rider.team === teamFilter;
+                const matchesNationality = !nationalityFilter ||
+                    rider.nationality.toLowerCase() === nationalityFilter;
+
+                const matchesSearch = !searchQuery ||
+                    rider.name.toLowerCase().includes(searchQuery) ||
+                    rider.nationality.toLowerCase().includes(searchQuery) ||
+                    getTeamName(rider.team).toLowerCase().includes(searchQuery);
+
+                return matchesTeam && matchesNationality && matchesSearch;
+            });
+
+            // Sort riders
+            sortRiders(sortFilter);
+
+            // Re-render
+            renderRiders();
+        }
+
+        /**
+         * Sort riders
+         */
+        function sortRiders(sortBy) {
+            switch (sortBy) {
+                case 'number':
+                    filteredRiders.sort((a, b) => a.number - b.number);
+                    break;
+                case 'name':
+                    filteredRiders.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'team':
+                    filteredRiders.sort((a, b) => {
+                        const teamA = getTeamName(a.team);
+                        const teamB = getTeamName(b.team);
+                        if (teamA !== teamB) {
+                            return teamA.localeCompare(teamB);
+                        }
+                        return a.name.localeCompare(b.name);
+                    });
+                    break;
+                case 'points':
+                    filteredRiders.sort((a, b) => (b.points_2025 || 0) - (a.points_2025 || 0));
+                    break;
+                case 'wins':
+                    filteredRiders.sort((a, b) => b.career_wins - a.career_wins);
+                    break;
+            }
+        }
+
+        /**
+         * Initialize view toggle
+         */
+        function initializeViewToggle() {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Update view
+                    currentView = btn.dataset.view;
+                    renderRiders();
+                });
+            });
+        }
+
+        /**
+         * Load top riders preview
+         */
+        async function loadTopRidersPreview() {
+            const container = document.getElementById('topRidersPreview');
+
+            try {
+                let standings = window.motoGPState.cache.standings;
+
+                if (!standings) {
+                    const dataFetcher = new DataFetcher();
+                    standings = await dataFetcher.fetchStandings();
+                }
+
+                if (standings && standings.rider_championship) {
+                    const topRiders = standings.rider_championship.slice(0, 5);
+
+                    // Get rider details for top riders
+                    const topRiderDetails = topRiders.map(standing => {
+                        const rider = allRiders.find(r => r.id === standing.rider_id);
+                        return {
+                            ...standing,
+                            photo: rider?.photo || '',
+                            nationality: rider?.nationality || '',
+                            flag: rider?.flag || '',
+                            team: rider?.team || ''
+                        };
+                    });
+
+                    container.innerHTML = `
+                        <div class="top-riders-list">
+                            ${topRiderDetails.map((rider, index) => `
+                                <div class="top-rider-item">
+                                    <div class="top-rider-position">
+                                        <span class="position-badge ${getPositionClass(index + 1)}">${index + 1}</span>
+                                    </div>
+                                    <div class="top-rider-photo">
+                                        <img src="${rider.photo}" alt="${rider.rider_name}"
+                                             onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍🦰';"
+                                             loading="lazy">
+                                    </div>
+                                    <div class="top-rider-info">
+                                        <div class="top-rider-name">${rider.rider_name}</div>
+                                        <div class="top-rider-meta">
+                                            <span class="top-rider-flag">${rider.flag}</span>
+                                            <span class="top-rider-team">${getTeamName(rider.team)}</span>
+                                        </div>
+                                    </div>
+                                    <div class="top-rider-stats">
+                                        <div class="top-rider-points">${rider.points} pts</div>
+                                        <div class="top-rider-wins">${rider.wins} wins</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = `
+                        <div class="preview-unavailable">
+                            <p>Championship standings temporarily unavailable</p>
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                console.error('Failed to load top riders:', error);
+                container.innerHTML = `
+                    <div class="preview-unavailable">
+                        <p>Unable to load championship standings</p>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * Get team name by ID
+         */
+        function getTeamName(teamId) {
+            if (!teamId || !allTeams.length) return 'Unknown Team';
+
+            const team = allTeams.find(t => t.id === teamId);
+            return team ? team.name : 'Unknown Team';
+        }
+
+        /**
+         * Get position class for styling
+         */
+        function getPositionClass(position) {
+            if (position === 1) return 'gold';
+            if (position === 2) return 'silver';
+            if (position === 3) return 'bronze';
+            return 'default';
+        }
+
+        /**
+         * Navigate to rider detail (placeholder for now)
+         */
+        function navigateToRiderDetail(riderId) {
+            // For now, just show an alert. In a full implementation, this would go to a rider detail page
+            const rider = allRiders.find(r => r.id === riderId);
+            if (rider) {
+                // Could navigate to a rider detail page or show a modal
+                alert(`Rider Details:\n\nName: ${rider.name}\nNumber: ${rider.number}\nNationality: ${rider.nationality}\nTeam: ${getTeamName(rider.team)}\n\nCareer Stats:\nWins: ${rider.career_wins}\nPodiums: ${rider.career_podiums}\nPoles: ${rider.career_poles}\nWorld Championships: ${rider.world_championships}`);
+            }
+        }
+
+        /**
+         * Reset all filters
+         */
+        function resetFilters() {
+            document.getElementById('teamFilter').value = '';
+            document.getElementById('nationalityFilter').value = '';
+            document.getElementById('sortFilter').value = 'number';
+            document.getElementById('searchInput').value = '';
+            applyFilters();
+        }
+
+        // Initialize riders page when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initRidersPage);
+        } else {
+            initRidersPage();
+        }
+
+        // Override the initRidersPage function in main.js
+        window.initRidersPage = initRidersPage;
+        window.navigateToRiderDetail = navigateToRiderDetail;
+        window.resetFilters = resetFilters;
+    </script>
+
+    <!-- CSS for additional riders page styles -->
+    <style>
+        .page-title {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-ribbon {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-4);
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            min-width: 100px;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            margin-top: var(--space-2);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: var(--space-2);
+        }
+
+        .view-btn.active {
+            background: var(--accent-red);
+            color: var(--text-primary);
+            border-color: var(--accent-red);
+        }
+
+        .riders-loading {
+            padding: var(--space-8) 0;
+        }
+
+        .loading-grid {
+            gap: var(--space-6);
+        }
+
+        .rider-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .rider-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-red);
+        }
+
+        .rider-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--space-6);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .rider-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            background: var(--tertiary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+            border: 3px solid var(--border-color);
+        }
+
+        .rider-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rider-number {
+            display: inline-block;
+            background: var(--accent-red);
+            color: var(--text-primary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-2);
+        }
+
+        .rider-name {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin: 0 0 var(--space-1) 0;
+            color: var(--text-primary);
+        }
+
+        .rider-nationality {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .rider-body {
+            padding: var(--space-6);
+        }
+
+        .rider-team {
+            text-align: center;
+            margin-bottom: var(--space-4);
+        }
+
+        .team-label {
+            font-size: var(--text-sm);
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .team-name {
+            font-weight: 500;
+            color: var(--accent-red);
+        }
+
+        .rider-stat-grid {
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+        }
+
+        .rider-stat-item {
+            padding: var(--space-3);
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-md);
+        }
+
+        .rider-stat-value {
+            display: block;
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .rider-stat-label {
+            display: block;
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+            margin-top: var(--space-1);
+        }
+
+        .rider-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rider-age {
+            font-size: var(--text-sm);
+            color: var(--text-muted);
+        }
+
+        .riders-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .rider-list-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .rider-list-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            background: var(--tertiary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .rider-list-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rider-list-info {
+            flex: 1;
+        }
+
+        .rider-list-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-2);
+        }
+
+        .rider-list-number {
+            display: inline-block;
+            background: var(--accent-red);
+            color: var(--text-primary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: var(--text-xs);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .rider-list-name {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .rider-list-nationality {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        .rider-list-team {
+            font-size: var(--text-sm);
+            color: var(--accent-red);
+            font-weight: 500;
+            margin-bottom: var(--space-2);
+        }
+
+        .rider-list-stats {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            background: var(--tertiary-bg);
+            color: var(--text-secondary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+        }
+
+        .rider-list-actions {
+            flex-shrink: 0;
+        }
+
+        .top-riders-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .top-rider-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+        }
+
+        .top-rider-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .top-rider-position {
+            flex-shrink: 0;
+        }
+
+        .top-rider-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            background: var(--tertiary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .top-rider-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .top-rider-info {
+            flex: 1;
+        }
+
+        .top-rider-name {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .top-rider-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        .top-rider-stats {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .top-rider-points {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .top-rider-wins {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        .preview-unavailable {
+            text-align: center;
+            padding: var(--space-8);
+            color: var(--text-muted);
+        }
+
+        .no-results {
+            padding: var(--space-16) 0;
+        }
+
+        .no-results-icon {
+            opacity: 0.6;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .stats-ribbon {
+                gap: var(--space-4);
+            }
+
+            .stat-item {
+                min-width: 80px;
+                padding: var(--space-3);
+            }
+
+            .stat-value {
+                font-size: var(--text-2xl);
+            }
+
+            .rider-list-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-3);
+            }
+
+            .rider-list-header {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-1);
+            }
+
+            .rider-list-stats {
+                justify-content: center;
+            }
+
+            .top-rider-item {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-3);
+            }
+
+            .top-rider-stats {
+                text-align: center;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Loading skeleton styles */
+        .loading-skeleton {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            text-align: center;
+        }
+
+        .skeleton-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(90deg, var(--secondary-bg) 25%, var(--tertiary-bg) 50%, var(--secondary-bg) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            margin: 0 auto var(--space-4);
+        }
+
+        .skeleton-text {
+            height: 1em;
+            background: linear-gradient(90deg, var(--secondary-bg) 25%, var(--tertiary-bg) 50%, var(--secondary-bg) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-sm);
+            margin: 0 auto var(--space-2);
+        }
+
+        .skeleton-text.large {
+            width: 80%;
+            height: 1.2em;
+        }
+
+        .skeleton-text.medium {
+            width: 60%;
+            height: 1em;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</body>
+</html>
