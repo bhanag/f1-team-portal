@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGP Calendar - 2025 Season Schedule</title>
+    <meta name="description" content="Complete 2025 MotoGP World Championship calendar with race dates, circuits, and schedule information">
+    <meta name="keywords" content="MotoGP, 2025, calendar, schedule, races, circuits, championship">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+
+    <!-- Theme -->
+    <script>
+        const theme = localStorage.getItem('motogp-theme') ||
+                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading calendar...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span style="font-size: 24px;">🏍️</span>
+                </div>
+                <span>MotoGP Portal</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="teams.html" class="nav-link">Teams</a></li>
+                    <li><a href="riders.html" class="nav-link">Riders</a></li>
+                    <li><a href="calendar.html" class="nav-link active">Calendar</a></li>
+                    <li><a href="standings.html" class="nav-link">Standings</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Theme -->
+            <div class="header-actions">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search races..." id="searchInput">
+                </div>
+
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
+            <li><a href="riders.html" class="mobile-nav-link">Riders</a></li>
+            <li><a href="calendar.html" class="mobile-nav-link active">Calendar</a></li>
+            <li><a href="standings.html" class="mobile-nav-link">Standings</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Page Header -->
+        <section class="section section-sm">
+            <div class="container text-center">
+                <h1 class="page-title text-4xl font-bold mb-4">2025 MotoGP Calendar</h1>
+                <p class="page-subtitle text-xl text-secondary mb-6">Complete race schedule for the 2025 MotoGP World Championship</p>
+
+                <!-- Quick Stats -->
+                <div class="stats-ribbon flex justify-center gap-8 mb-8">
+                    <div class="stat-item">
+                        <span class="stat-value">22</span>
+                        <span class="stat-label">Races</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">18</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">4</span>
+                        <span class="stat-label">Continents</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">7</span>
+                        <span class="stat-label">Months</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View Controls -->
+        <section class="section-sm">
+            <div class="container">
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label class="filter-label">View:</label>
+                        <div class="view-toggle">
+                            <button class="btn btn-outline btn-sm view-btn active" data-view="calendar">
+                                <span>📅</span> Calendar
+                            </button>
+                            <button class="btn btn-outline btn-sm view-btn" data-view="list">
+                                <span>📋</span> List
+                            </button>
+                            <button class="btn btn-outline btn-sm view-btn" data-view="map">
+                                <span>🗺️</span> Map
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Filter by Status:</label>
+                        <select class="form-select" id="statusFilter">
+                            <option value="">All Races</option>
+                            <option value="completed">Completed</option>
+                            <option value="upcoming">Upcoming</option>
+                            <option value="next">Next Race</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Filter by Continent:</label>
+                        <select class="form-select" id="continentFilter">
+                            <option value="">All Continents</option>
+                            <option value="Europe">Europe 🇪🇺</option>
+                            <option value="Asia">Asia 🌏</option>
+                            <option value="Americas">Americas 🌎</option>
+                            <option value="Oceania">Oceania 🌏</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Search:</label>
+                        <input type="text" class="form-input" id="raceSearch" placeholder="Search races...">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Race Countdown -->
+        <section class="section-sm">
+            <div class="container">
+                <div class="next-race-banner" id="nextRaceBanner">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Finding next race...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar View -->
+        <section class="section" id="calendarView">
+            <div class="container">
+                <div class="calendar-container" id="calendarContainer">
+                    <!-- Loading State -->
+                    <div class="calendar-loading" id="calendarLoading">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <p>Loading race calendar...</p>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Grid (populated by JavaScript) -->
+                    <div class="calendar-grid" id="calendarGrid" style="display: none;">
+                        <!-- Calendar months will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- List View -->
+        <section class="section" id="listView" style="display: none;">
+            <div class="container">
+                <div class="races-list-container">
+                    <div class="races-list" id="racesList">
+                        <!-- Race list items will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map View -->
+        <section class="section" id="mapView" style="display: none;">
+            <div class="container">
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-icon">
+                            <span style="font-size: 4rem;">🗺️</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Interactive Map</h3>
+                        <p class="text-secondary mb-6">Explore the 2025 MotoGP circuits around the world</p>
+                        <div class="map-stats grid grid-cols-2 grid-cols-md-4">
+                            <div class="map-stat-item text-center">
+                                <div class="map-stat-value">18</div>
+                                <div class="map-stat-label">Countries</div>
+                            </div>
+                            <div class="map-stat-item text-center">
+                                <div class="map-stat-value">22</div>
+                                <div class="map-stat-label">Unique Circuits</div>
+                            </div>
+                            <div class="map-stat-item text-center">
+                                <div class="map-stat-value">4</div>
+                                <div class="map-stat-label">Continents</div>
+                            </div>
+                            <div class="map-stat-item text-center">
+                                <div class="map-stat-value">7</div>
+                                <div class="map-stat-label">Months</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Season Statistics -->
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">2025 Season Progress</h2>
+                    <p class="text-secondary text-lg">Track the championship throughout the season</p>
+                </div>
+
+                <div class="season-progress-container">
+                    <div class="progress-overview">
+                        <div class="progress-stats">
+                            <div class="progress-stat">
+                                <div class="progress-label">Completed Races</div>
+                                <div class="progress-value" id="completedRaces">0</div>
+                            </div>
+                            <div class="progress-stat">
+                                <div class="progress-label">Remaining Races</div>
+                                <div class="progress-value" id="remainingRaces">22</div>
+                            </div>
+                            <div class="progress-stat">
+                                <div class="progress-label">Season Progress</div>
+                                <div class="progress-value" id="seasonProgress">0%</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="teams.html" class="footer-link">Teams</a></li>
+                        <li><a href="riders.html" class="footer-link">Riders</a></li>
+                        <li><a href="calendar.html" class="footer-link">Calendar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Championship</h3>
+                    <ul class="footer-links">
+                        <li><a href="standings.html" class="footer-link">Standings</a></li>
+                        <li><a href="teams.html" class="footer-link">Teams</a></li>
+                        <li><a href="https://www.motogp.com" target="_blank" class="footer-link">Official MotoGP</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow MotoGP</h3>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/motogp" target="_blank" class="social-link" aria-label="YouTube">
+                            <span>📺</span>
+                        </a>
+                        <a href="https://www.instagram.com/motogp" target="_blank" class="social-link" aria-label="Instagram">
+                            <span>📷</span>
+                        </a>
+                        <a href="https://twitter.com/MotoGP" target="_blank" class="social-link" aria-label="Twitter">
+                            <span>🐦</span>
+                        </a>
+                        <a href="https://www.facebook.com/MotoGP" target="_blank" class="social-link" aria-label="Facebook">
+                            <span>📘</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p class="text-secondary text-sm">
+                        Complete 2025 MotoGP World Championship calendar with race schedules, circuits, and championship information.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="text-muted text-sm">
+                    © 2025 MotoGP Team Portal | Data © MotoGP.com | For educational use only
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/cache-manager.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/calendar.js"></script>
+
+    <!-- Calendar Page Specific Script -->
+    <script>
+        /**
+         * Calendar page specific functionality
+         */
+        let allRaces = [];
+        let filteredRaces = [];
+        let currentView = 'calendar';
+
+        async function initCalendarPage() {
+            console.log('📅 Initializing calendar page...');
+
+            try {
+                // Load calendar data
+                await loadCalendarData();
+
+                // Initialize view toggle
+                initViewToggle();
+
+                // Initialize filters
+                initializeFilters();
+
+                // Load next race banner
+                await loadNextRaceBanner();
+
+                // Update season progress
+                updateSeasonProgress();
+
+                console.log('✅ Calendar page initialized successfully');
+
+            } catch (error) {
+                console.error('❌ Failed to initialize calendar page:', error);
+                showError('Failed to load calendar data. Please refresh the page.');
+            }
+        }
+
+        /**
+         * Load calendar data
+         */
+        async function loadCalendarData() {
+            const loadingEl = document.getElementById('calendarLoading');
+            const calendarGrid = document.getElementById('calendarGrid');
+            const racesList = document.getElementById('racesList');
+
+            try {
+                // Get calendar from cache or fetch
+                let calendar = window.motoGPState.cache.calendar;
+
+                if (!calendar) {
+                    const dataFetcher = new DataFetcher();
+                    showLoading();
+                    calendar = await dataFetcher.fetchCalendar();
+                    hideLoading();
+                }
+
+                if (!calendar || calendar.length === 0) {
+                    throw new Error('No calendar data available');
+                }
+
+                // Sort races by date
+                allRaces = calendar.sort((a, b) => new Date(a.date) - new Date(b.date));
+                filteredRaces = allRaces;
+
+                // Update race statuses based on current date
+                updateRaceStatuses();
+
+                // Hide loading, show content
+                loadingEl.style.display = 'none';
+                calendarGrid.style.display = 'block';
+
+                // Render calendar
+                renderCalendar();
+                renderRaceList();
+
+            } catch (error) {
+                console.error('Failed to load calendar:', error);
+                loadingEl.innerHTML = `
+                    <div class="error-message text-center">
+                        <p>Failed to load calendar data. Please try refreshing the page.</p>
+                        <button class="btn btn-primary mt-4" onclick="location.reload()">Refresh Page</button>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * Update race statuses based on current date
+         */
+        function updateRaceStatuses() {
+            const now = new Date();
+
+            allRaces.forEach((race, index) => {
+                const raceDate = new Date(race.date);
+                const raceEndDate = new Date(race.date_end || race.date);
+
+                if (raceEndDate < now) {
+                    race.status = 'completed';
+                } else if (raceDate <= now && raceEndDate >= now) {
+                    race.status = 'in-progress';
+                } else {
+                    race.status = 'upcoming';
+                }
+
+                // Mark next race
+                if (race.status === 'upcoming' && !allRaces.find(r => r.status === 'next')) {
+                    race.status = 'next';
+                }
+            });
+        }
+
+        /**
+         * Render calendar grid view
+         */
+        function renderCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+
+            // Group races by month
+            const racesByMonth = {};
+            filteredRaces.forEach(race => {
+                const date = new Date(race.date);
+                const monthYear = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+                if (!racesByMonth[monthYear]) {
+                    racesByMonth[monthYear] = [];
+                }
+                racesByMonth[monthYear].push(race);
+            });
+
+            // Generate calendar HTML
+            let calendarHTML = '';
+            const monthNames = Object.keys(racesByMonth).sort((a, b) => new Date(a) - new Date(b));
+
+            monthNames.forEach(month => {
+                const races = racesByMonth[month];
+                const firstRace = new Date(races[0].date);
+                const year = firstRace.getFullYear();
+                const monthIndex = firstRace.getMonth();
+
+                calendarHTML += `
+                    <div class="calendar-month">
+                        <div class="month-header">
+                            <h3 class="month-title">${month}</h3>
+                            <div class="month-stats">${races.length} race${races.length !== 1 ? 's' : ''}</div>
+                        </div>
+                        <div class="month-grid">
+                            ${generateMonthGrid(year, monthIndex, races)}
+                        </div>
+                    </div>
+                `;
+            });
+
+            calendarGrid.innerHTML = calendarHTML;
+        }
+
+        /**
+         * Generate calendar grid for a month
+         */
+        function generateMonthGrid(year, month, races) {
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+
+            let gridHTML = '<div class="calendar-weekdays">';
+            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            weekdays.forEach(day => {
+                gridHTML += `<div class="calendar-weekday">${day}</div>`;
+            });
+            gridHTML += '</div><div class="calendar-days">';
+
+            // Empty cells for days before month starts
+            for (let i = 0; i < firstDay; i++) {
+                gridHTML += '<div class="calendar-day empty"></div>';
+            }
+
+            // Days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const currentDate = new Date(year, month, day);
+                const dateString = currentDate.toISOString().split('T')[0];
+                const dayRaces = races.filter(race => race.date === dateString);
+
+                const isToday = currentDate.toDateString() === today.toDateString();
+                const isPast = currentDate < today;
+
+                let raceContent = '';
+                if (dayRaces.length > 0) {
+                    const race = dayRaces[0];
+                    raceContent = `
+                        <div class="race-marker ${race.status}" onclick="showRaceDetails('${race.id}')">
+                            <div class="race-marker-flag">${race.flag}</div>
+                            <div class="race-marker-info">
+                                <div class="race-marker-name">${getShortRaceName(race.name)}</div>
+                                <div class="race-marker-circuit">${getShortCircuitName(race.circuit)}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                gridHTML += `
+                    <div class="calendar-day ${isToday ? 'today' : ''} ${isPast ? 'past' : ''}">
+                        <div class="day-number">${day}</div>
+                        ${raceContent}
+                    </div>
+                `;
+            }
+
+            gridHTML += '</div>';
+            return gridHTML;
+        }
+
+        /**
+         * Render race list view
+         */
+        function renderRaceList() {
+            const racesList = document.getElementById('racesList');
+
+            if (filteredRaces.length === 0) {
+                racesList.innerHTML = `
+                    <div class="no-results text-center py-12">
+                        <div class="no-results-icon mb-4">
+                            <span style="font-size: 4rem;">🔍</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-2">No Races Found</h3>
+                        <p class="text-secondary mb-4">Try adjusting your filters</p>
+                    </div>
+                `;
+                return;
+            }
+
+            racesList.innerHTML = filteredRaces.map((race, index) => `
+                <div class="race-list-item card ${race.status}" onclick="showRaceDetails('${race.id}')">
+                    <div class="card-body">
+                        <div class="race-list-content">
+                            <div class="race-list-date">
+                                <div class="race-date-day">${new Date(race.date).getDate()}</div>
+                                <div class="race-date-month">${new Date(race.date).toLocaleDateString('en-US', { month: 'short' })}</div>
+                            </div>
+                            <div class="race-list-flag">${race.flag}</div>
+                            <div class="race-list-info">
+                                <h3 class="race-list-name">${race.name}</h3>
+                                <p class="race-list-circuit">${race.circuit}</p>
+                                <div class="race-list-meta">
+                                    <span class="race-status ${race.status}">${getRaceStatusText(race.status)}</span>
+                                    <span class="race-continent">${race.continent}</span>
+                                </div>
+                            </div>
+                            <div class="race-list-results">
+                                ${getRaceResultsDisplay(race)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /**
+         * Initialize view toggle
+         */
+        function initViewToggle() {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Update view
+                    const view = btn.dataset.view;
+                    switchView(view);
+                });
+            });
+        }
+
+        /**
+         * Switch between views
+         */
+        function switchView(view) {
+            currentView = view;
+
+            // Hide all views
+            document.getElementById('calendarView').style.display = 'none';
+            document.getElementById('listView').style.display = 'none';
+            document.getElementById('mapView').style.display = 'none';
+
+            // Show selected view
+            switch (view) {
+                case 'calendar':
+                    document.getElementById('calendarView').style.display = 'block';
+                    break;
+                case 'list':
+                    document.getElementById('listView').style.display = 'block';
+                    renderRaceList();
+                    break;
+                case 'map':
+                    document.getElementById('mapView').style.display = 'block';
+                    break;
+            }
+        }
+
+        /**
+         * Initialize filters
+         */
+        function initializeFilters() {
+            const statusFilter = document.getElementById('statusFilter');
+            const continentFilter = document.getElementById('continentFilter');
+            const raceSearch = document.getElementById('raceSearch');
+
+            statusFilter.addEventListener('change', applyFilters);
+            continentFilter.addEventListener('change', applyFilters);
+            raceSearch.addEventListener('input', debounce(applyFilters, 300));
+        }
+
+        /**
+         * Apply filters
+         */
+        function applyFilters() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const continentFilter = document.getElementById('continentFilter').value;
+            const searchQuery = document.getElementById('raceSearch').value.toLowerCase();
+
+            filteredRaces = allRaces.filter(race => {
+                const matchesStatus = !statusFilter || race.status === statusFilter;
+                const matchesContinent = !continentFilter || race.continent === continentFilter;
+                const matchesSearch = !searchQuery ||
+                    race.name.toLowerCase().includes(searchQuery) ||
+                    race.circuit.toLowerCase().includes(searchQuery) ||
+                    race.country.toLowerCase().includes(searchQuery);
+
+                return matchesStatus && matchesContinent && matchesSearch;
+            });
+
+            // Re-render current view
+            if (currentView === 'calendar') {
+                renderCalendar();
+            } else if (currentView === 'list') {
+                renderRaceList();
+            }
+        }
+
+        /**
+         * Load next race banner
+         */
+        async function loadNextRaceBanner() {
+            const bannerEl = document.getElementById('nextRaceBanner');
+
+            try {
+                const nextRace = allRaces.find(race => race.status === 'next' || race.status === 'in-progress');
+
+                if (nextRace) {
+                    const timeUntil = formatTimeRemaining(nextRace.date);
+                    bannerEl.innerHTML = `
+                        <div class="next-race-content">
+                            <div class="next-race-header">
+                                <span class="next-race-label">${nextRace.status === 'in-progress' ? 'RACING NOW' : 'NEXT RACE'}</span>
+                                <span class="next-race-countdown">${timeUntil}</span>
+                            </div>
+                            <div class="next-race-details">
+                                <div class="next-race-flag">${nextRace.flag}</div>
+                                <div class="next-race-info">
+                                    <h3 class="next-race-name">${nextRace.name}</h3>
+                                    <p class="next-race-circuit">${nextRace.circuit}</p>
+                                </div>
+                                <button class="btn btn-primary" onclick="showRaceDetails('${nextRace.id}')">
+                                    Race Details
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    bannerEl.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Failed to load next race:', error);
+                bannerEl.style.display = 'none';
+            }
+        }
+
+        /**
+         * Update season progress
+         */
+        function updateSeasonProgress() {
+            const completedRaces = allRaces.filter(race => race.status === 'completed').length;
+            const totalRaces = allRaces.length;
+            const progressPercent = Math.round((completedRaces / totalRaces) * 100);
+
+            document.getElementById('completedRaces').textContent = completedRaces;
+            document.getElementById('remainingRaces').textContent = totalRaces - completedRaces;
+            document.getElementById('seasonProgress').textContent = `${progressPercent}%`;
+            document.getElementById('progressFill').style.width = `${progressPercent}%`;
+        }
+
+        /**
+         * Show race details (placeholder)
+         */
+        function showRaceDetails(raceId) {
+            const race = allRaces.find(r => r.id === raceId);
+            if (race) {
+                const results = race.winner ? `
+Winner: ${race.winner}
+Pole Position: ${race.pole_position}
+Fastest Lap: ${race.fastest_lap}
+                ` : 'Upcoming race';
+
+                alert(`Race Details:\n\n${race.name}\n${race.circuit}\n${race.flag} ${race.country}\nDate: ${formatDate(race.date, 'long')}\n\n${results}`);
+            }
+        }
+
+        /**
+         * Helper functions
+         */
+        function getShortRaceName(name) {
+            return name.replace('Grand Prix of', '').replace('Gran Premio di', '').replace('Grand Prix', '').trim();
+        }
+
+        function getShortCircuitName(circuit) {
+            return circuit.replace('International Circuit', 'Int.').replace('Circuit', '').trim();
+        }
+
+        function getRaceStatusText(status) {
+            const statusMap = {
+                'completed': 'Completed',
+                'in-progress': 'Racing Now',
+                'upcoming': 'Upcoming',
+                'next': 'Next Race'
+            };
+            return statusMap[status] || status;
+        }
+
+        function getRaceResultsDisplay(race) {
+            if (race.status === 'completed' && race.winner) {
+                return `
+                    <div class="race-winner">
+                        <div class="winner-label">Winner</div>
+                        <div class="winner-name">${race.winner}</div>
+                    </div>
+                `;
+            } else if (race.status === 'in-progress') {
+                return '<span class="race-status live">🔴 LIVE</span>';
+            } else if (race.status === 'next') {
+                return '<span class="race-status next">NEXT RACE</span>';
+            } else {
+                return `<span class="race-date">${formatDate(race.date, 'short')}</span>`;
+            }
+        }
+
+        // Initialize calendar page when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCalendarPage);
+        } else {
+            initCalendarPage();
+        }
+
+        // Override the initCalendarPage function in main.js
+        window.initCalendarPage = initCalendarPage;
+        window.showRaceDetails = showRaceDetails;
+    </script>
+
+    <!-- CSS for additional calendar page styles -->
+    <style>
+        .page-title {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-ribbon {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-4);
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            min-width: 100px;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            margin-top: var(--space-2);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: var(--space-2);
+        }
+
+        .view-btn.active {
+            background: var(--accent-red);
+            color: var(--text-primary);
+            border-color: var(--accent-red);
+        }
+
+        .next-race-banner {
+            background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-red)88 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            color: var(--text-primary);
+        }
+
+        .next-race-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-6);
+        }
+
+        .next-race-header {
+            text-align: center;
+        }
+
+        .next-race-label {
+            display: block;
+            font-size: var(--text-sm);
+            opacity: 0.9;
+            margin-bottom: var(--space-2);
+        }
+
+        .next-race-countdown {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            font-family: var(--font-heading);
+        }
+
+        .next-race-details {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .next-race-flag {
+            font-size: 3rem;
+        }
+
+        .next-race-name {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+        }
+
+        .next-race-circuit {
+            opacity: 0.9;
+        }
+
+        .calendar-month {
+            margin-bottom: var(--space-8);
+        }
+
+        .month-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4);
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            margin-bottom: var(--space-4);
+        }
+
+        .month-title {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .month-stats {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .calendar-grid {
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: var(--tertiary-bg);
+        }
+
+        .calendar-weekday {
+            padding: var(--space-3);
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .calendar-weekday:last-child {
+            border-right: none;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .calendar-day {
+            min-height: 100px;
+            padding: var(--space-2);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .calendar-day:nth-child(7n) {
+            border-right: none;
+        }
+
+        .calendar-day.empty {
+            background: var(--tertiary-bg);
+        }
+
+        .calendar-day.today {
+            background: var(--accent-red)22;
+        }
+
+        .calendar-day.past {
+            opacity: 0.6;
+        }
+
+        .day-number {
+            font-size: var(--text-sm);
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-1);
+        }
+
+        .calendar-day.today .day-number {
+            color: var(--accent-red);
+            font-weight: 700;
+        }
+
+        .race-marker {
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-sm);
+            padding: var(--space-1);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: var(--text-xs);
+        }
+
+        .race-marker:hover {
+            background: var(--secondary-bg);
+            transform: scale(1.05);
+        }
+
+        .race-marker.completed {
+            border-left: 3px solid #28a745;
+        }
+
+        .race-marker.next {
+            border-left: 3px solid var(--accent-red);
+            background: var(--accent-red)22;
+        }
+
+        .race-marker.upcoming {
+            border-left: 3px solid #ffc107;
+        }
+
+        .race-marker-flag {
+            font-size: 1.2em;
+            margin-bottom: var(--space-1);
+        }
+
+        .race-marker-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .race-marker-circuit {
+            color: var(--text-muted);
+            font-size: 0.7em;
+        }
+
+        .races-list-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .races-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .race-list-item {
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .race-list-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .race-list-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .race-list-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+
+        .race-date-day {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .race-date-month {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        .race-list-flag {
+            font-size: 2rem;
+        }
+
+        .race-list-info {
+            flex: 1;
+        }
+
+        .race-list-name {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+            color: var(--text-primary);
+        }
+
+        .race-list-circuit {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .race-list-meta {
+            display: flex;
+            gap: var(--space-3);
+            align-items: center;
+        }
+
+        .race-status {
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+            font-weight: 500;
+        }
+
+        .race-status.completed {
+            background: #28a745;
+            color: white;
+        }
+
+        .race-status.next {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .race-status.upcoming {
+            background: #ffc107;
+            color: var(--text-primary);
+        }
+
+        .race-status.live {
+            background: #dc3545;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .race-continent {
+            color: var(--text-muted);
+            font-size: var(--text-xs);
+        }
+
+        .race-list-results {
+            text-align: right;
+        }
+
+        .race-winner {
+            min-width: 120px;
+        }
+
+        .winner-label {
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+            margin-bottom: var(--space-1);
+        }
+
+        .winner-name {
+            font-weight: 600;
+            color: var(--accent-red);
+        }
+
+        .map-placeholder {
+            text-align: center;
+            padding: var(--space-16) var(--space-8);
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .map-icon {
+            margin-bottom: var(--space-6);
+        }
+
+        .map-stats {
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .map-stat-value {
+            display: block;
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .map-stat-label {
+            display: block;
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            margin-top: var(--space-2);
+        }
+
+        .season-progress-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .progress-overview {
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+            text-align: center;
+        }
+
+        .progress-label {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .progress-value {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .progress-bar-container {
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-full);
+            height: 12px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--border-color);
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-orange) 100%);
+            transition: width 1s ease-out;
+        }
+
+        .no-results {
+            padding: var(--space-16) 0;
+        }
+
+        .no-results-icon {
+            opacity: 0.6;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .stats-ribbon {
+                gap: var(--space-4);
+            }
+
+            .stat-item {
+                min-width: 80px;
+                padding: var(--space-3);
+            }
+
+            .stat-value {
+                font-size: var(--text-2xl);
+            }
+
+            .next-race-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-4);
+            }
+
+            .next-race-details {
+                flex-direction: column;
+                gap: var(--space-2);
+            }
+
+            .calendar-weekdays,
+            .calendar-days {
+                grid-template-columns: repeat(7, 1fr);
+            }
+
+            .calendar-day {
+                min-height: 80px;
+                padding: var(--space-1);
+            }
+
+            .day-number {
+                font-size: var(--text-xs);
+            }
+
+            .race-marker {
+                font-size: 0.6em;
+            }
+
+            .race-list-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-3);
+            }
+
+            .race-list-meta {
+                justify-content: center;
+            }
+
+            .race-list-results {
+                text-align: center;
+            }
+
+            .progress-stats {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .view-toggle {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 479px) {
+            .calendar-weekday {
+                font-size: 0.7em;
+                padding: var(--space-1);
+            }
+
+            .calendar-day {
+                min-height: 60px;
+                padding: var(--space-1);
+            }
+
+            .race-marker {
+                display: none;
+            }
+        }
+    </style>
+</body>
+</html>
