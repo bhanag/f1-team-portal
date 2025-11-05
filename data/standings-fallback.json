@@ -1,0 +1,419 @@
+{
+  "version": "2025.1.0",
+  "last_updated": "2025-05-13T00:00:00Z",
+  "standings": {
+    "rider_championship": [
+      {
+        "position": 1,
+        "rider_id": "marc-marquez",
+        "rider_name": "Marc Márquez",
+        "team": "Ducati Lenovo Team",
+        "manufacturer": "Ducati",
+        "points": 156,
+        "wins": 3,
+        "podiums": 5,
+        "poles": 2,
+        "gap_to_leader": "0"
+      },
+      {
+        "position": 2,
+        "rider_id": "jorge-martin",
+        "rider_name": "Jorge Martín",
+        "team": "Aprilia Racing",
+        "manufacturer": "Aprilia",
+        "points": 142,
+        "wins": 2,
+        "podiums": 4,
+        "poles": 3,
+        "gap_to_leader": "14"
+      },
+      {
+        "position": 3,
+        "rider_id": "francesco-bagnaia",
+        "rider_name": "Francesco Bagnaia",
+        "team": "Ducati Lenovo Team",
+        "manufacturer": "Ducati",
+        "points": 138,
+        "wins": 2,
+        "podiums": 5,
+        "poles": 2,
+        "gap_to_leader": "18"
+      },
+      {
+        "position": 4,
+        "rider_id": "pedro-acosta",
+        "rider_name": "Pedro Acosta",
+        "team": "Red Bull KTM Factory Racing",
+        "manufacturer": "KTM",
+        "points": 121,
+        "wins": 1,
+        "podiums": 4,
+        "poles": 2,
+        "gap_to_leader": "35"
+      },
+      {
+        "position": 5,
+        "rider_id": "brad-binder",
+        "rider_name": "Brad Binder",
+        "team": "Red Bull KTM Factory Racing",
+        "manufacturer": "KTM",
+        "points": 108,
+        "wins": 0,
+        "podiums": 3,
+        "poles": 0,
+        "gap_to_leader": "48"
+      },
+      {
+        "position": 6,
+        "rider_id": "fabio-quartararo",
+        "rider_name": "Fabio Quartararo",
+        "team": "Monster Energy Yamaha MotoGP",
+        "manufacturer": "Yamaha",
+        "points": 95,
+        "wins": 0,
+        "podiums": 2,
+        "poles": 2,
+        "gap_to_leader": "61"
+      },
+      {
+        "position": 7,
+        "rider_id": "jack-miller",
+        "rider_name": "Jack Miller",
+        "team": "Prima Pramac Yamaha MotoGP",
+        "manufacturer": "Yamaha",
+        "points": 84,
+        "wins": 0,
+        "podiums": 2,
+        "poles": 1,
+        "gap_to_leader": "72"
+      },
+      {
+        "position": 8,
+        "rider_id": "alex-rins",
+        "rider_name": "Alex Rins",
+        "team": "Monster Energy Yamaha MotoGP",
+        "manufacturer": "Yamaha",
+        "points": 76,
+        "wins": 0,
+        "podiums": 1,
+        "poles": 0,
+        "gap_to_leader": "80"
+      },
+      {
+        "position": 9,
+        "rider_id": "marco-bezzecchi",
+        "rider_name": "Marco Bezzecchi",
+        "team": "Aprilia Racing",
+        "manufacturer": "Aprilia",
+        "points": 71,
+        "wins": 0,
+        "podiums": 1,
+        "poles": 0,
+        "gap_to_leader": "85"
+      },
+      {
+        "position": 10,
+        "rider_id": "enea-bastianini",
+        "rider_name": "Enea Bastianini",
+        "team": "Red Bull KTM Tech3",
+        "manufacturer": "KTM",
+        "points": 65,
+        "wins": 0,
+        "podiums": 1,
+        "poles": 0,
+        "gap_to_leader": "91"
+      },
+      {
+        "position": 11,
+        "rider_id": "franco-morbidelli",
+        "rider_name": "Franco Morbidelli",
+        "team": "Pertamina Enduro VR46 Racing Team",
+        "manufacturer": "Ducati",
+        "points": 58,
+        "wins": 0,
+        "podiums": 1,
+        "poles": 0,
+        "gap_to_leader": "98"
+      },
+      {
+        "position": 12,
+        "rider_id": "johann-zarco",
+        "rider_name": "Johann Zarco",
+        "team": "LCR Honda",
+        "manufacturer": "Honda",
+        "points": 54,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 1,
+        "gap_to_leader": "102"
+      },
+      {
+        "position": 13,
+        "rider_id": "maverick-vinales",
+        "rider_name": "Maverick Viñales",
+        "team": "Red Bull KTM Tech3",
+        "manufacturer": "KTM",
+        "points": 48,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "108"
+      },
+      {
+        "position": 14,
+        "rider_id": "alex-marquez",
+        "rider_name": "Alex Márquez",
+        "team": "BK8 Gresini Racing MotoGP",
+        "manufacturer": "Ducati",
+        "points": 42,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "114"
+      },
+      {
+        "position": 15,
+        "rider_id": "joan-mir",
+        "rider_name": "Joan Mir",
+        "team": "Honda HRC Castrol",
+        "manufacturer": "Honda",
+        "points": 38,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "118"
+      },
+      {
+        "position": 16,
+        "rider_id": "miguel-oliveira",
+        "rider_name": "Miguel Oliveira",
+        "team": "Prima Pramac Yamaha MotoGP",
+        "manufacturer": "Yamaha",
+        "points": 35,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "121"
+      },
+      {
+        "position": 17,
+        "rider_id": "luca-marini",
+        "rider_name": "Luca Marini",
+        "team": "Honda HRC Castrol",
+        "manufacturer": "Honda",
+        "points": 31,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "125"
+      },
+      {
+        "position": 18,
+        "rider_id": "somkiat-chantra",
+        "rider_name": "Somkiat Chantra",
+        "team": "LCR Honda",
+        "manufacturer": "Honda",
+        "points": 28,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "128"
+      },
+      {
+        "position": 19,
+        "rider_id": "raul-fernandez",
+        "rider_name": "Raúl Fernández",
+        "team": "Trackhouse MotoGP Team",
+        "manufacturer": "Aprilia",
+        "points": 22,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "134"
+      },
+      {
+        "position": 20,
+        "rider_id": "takaaki-nakagami",
+        "rider_name": "Takaaki Nakagami",
+        "team": "Trackhouse MotoGP Team",
+        "manufacturer": "Aprilia",
+        "points": 19,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "137"
+      },
+      {
+        "position": 21,
+        "rider_id": "fermin-aldeguer",
+        "rider_name": "Fermín Aldeguer",
+        "team": "BK8 Gresini Racing MotoGP",
+        "manufacturer": "Ducati",
+        "points": 15,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "141"
+      },
+      {
+        "position": 22,
+        "rider_id": "fabio-di-giannantonio",
+        "rider_name": "Fabio Di Giannantonio",
+        "team": "Pertamina Enduro VR46 Racing Team",
+        "manufacturer": "Ducati",
+        "points": 12,
+        "wins": 0,
+        "podiums": 0,
+        "poles": 0,
+        "gap_to_leader": "144"
+      }
+    ],
+    "team_championship": [
+      {
+        "position": 1,
+        "team_id": "ducati-lenovo",
+        "team_name": "Ducati Lenovo Team",
+        "points": 294,
+        "wins": 5,
+        "podiums": 10,
+        "gap_to_leader": "0"
+      },
+      {
+        "position": 2,
+        "team_id": "aprilia-racing",
+        "team_name": "Aprilia Racing",
+        "points": 213,
+        "wins": 2,
+        "podiums": 5,
+        "gap_to_leader": "81"
+      },
+      {
+        "position": 3,
+        "team_id": "redbull-ktm",
+        "team_name": "Red Bull KTM Factory Racing",
+        "points": 229,
+        "wins": 1,
+        "podiums": 7,
+        "gap_to_leader": "65"
+      },
+      {
+        "position": 4,
+        "team_id": "monster-yamaha",
+        "team_name": "Monster Energy Yamaha MotoGP",
+        "points": 171,
+        "wins": 0,
+        "podiums": 3,
+        "gap_to_leader": "123"
+      },
+      {
+        "position": 5,
+        "team_id": "prima-pramac",
+        "team_name": "Prima Pramac Yamaha MotoGP",
+        "points": 119,
+        "wins": 0,
+        "podiums": 2,
+        "gap_to_leader": "175"
+      },
+      {
+        "position": 6,
+        "team_id": "ktm-tech3",
+        "team_name": "Red Bull KTM Tech3",
+        "points": 113,
+        "wins": 0,
+        "podiums": 1,
+        "gap_to_leader": "181"
+      },
+      {
+        "position": 7,
+        "team_id": "vr46-racing",
+        "team_name": "Pertamina Enduro VR46 Racing Team",
+        "points": 70,
+        "wins": 0,
+        "podiums": 1,
+        "gap_to_leader": "224"
+      },
+      {
+        "position": 8,
+        "team_id": "lcr-honda",
+        "team_name": "LCR Honda",
+        "points": 82,
+        "wins": 0,
+        "podiums": 0,
+        "gap_to_leader": "212"
+      },
+      {
+        "position": 9,
+        "team_id": "honda-castrol",
+        "team_name": "Honda HRC Castrol",
+        "points": 69,
+        "wins": 0,
+        "podiums": 0,
+        "gap_to_leader": "225"
+      },
+      {
+        "position": 10,
+        "team_id": "gresini-racing",
+        "team_name": "BK8 Gresini Racing MotoGP",
+        "points": 57,
+        "wins": 0,
+        "podiums": 0,
+        "gap_to_leader": "237"
+      },
+      {
+        "position": 11,
+        "team_id": "trackhouse",
+        "team_name": "Trackhouse MotoGP Team",
+        "points": 41,
+        "wins": 0,
+        "podiums": 0,
+        "gap_to_leader": "253"
+      },
+      {
+        "position": 12,
+        "team_id": "rnf-racing",
+        "team_name": "RNF Racing",
+        "points": 0,
+        "wins": 0,
+        "podiums": 0,
+        "gap_to_leader": "294"
+      }
+    ],
+    "manufacturer_championship": [
+      {
+        "position": 1,
+        "manufacturer": "Ducati",
+        "points": 461,
+        "wins": 5,
+        "podiums": 13
+      },
+      {
+        "position": 2,
+        "manufacturer": "KTM",
+        "points": 342,
+        "wins": 1,
+        "podiums": 8
+      },
+      {
+        "position": 3,
+        "manufacturer": "Aprilia",
+        "points": 254,
+        "wins": 2,
+        "podiums": 6
+      },
+      {
+        "position": 4,
+        "manufacturer": "Yamaha",
+        "points": 290,
+        "wins": 0,
+        "podiums": 5
+      },
+      {
+        "position": 5,
+        "manufacturer": "Honda",
+        "points": 151,
+        "wins": 0,
+        "podiums": 0
+      }
+    ]
+  }
+}
