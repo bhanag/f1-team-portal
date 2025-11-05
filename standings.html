@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGP Standings - 2025 Championship</title>
+    <meta name="description" content="Current 2025 MotoGP World Championship standings for riders, teams, and manufacturers">
+    <meta name="keywords" content="MotoGP, 2025, standings, championship, points, riders, teams, manufacturers">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+
+    <!-- Theme -->
+    <script>
+        const theme = localStorage.getItem('motogp-theme') ||
+                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading standings...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span style="font-size: 24px;">🏍️</span>
+                </div>
+                <span>MotoGP Portal</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="teams.html" class="nav-link">Teams</a></li>
+                    <li><a href="riders.html" class="nav-link">Riders</a></li>
+                    <li><a href="calendar.html" class="nav-link">Calendar</a></li>
+                    <li><a href="standings.html" class="nav-link active">Standings</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Theme -->
+            <div class="header-actions">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search riders or teams..." id="searchInput">
+                </div>
+
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
+            <li><a href="riders.html" class="mobile-nav-link">Riders</a></li>
+            <li><a href="calendar.html" class="mobile-nav-link">Calendar</a></li>
+            <li><a href="standings.html" class="mobile-nav-link active">Standings</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Page Header -->
+        <section class="section section-sm">
+            <div class="container text-center">
+                <h1 class="page-title text-4xl font-bold mb-4">2025 Championship Standings</h1>
+                <p class="page-subtitle text-xl text-secondary mb-6">Live MotoGP World Championship standings for riders, teams, and manufacturers</p>
+
+                <!-- Last Update Info -->
+                <div class="last-update-info">
+                    <span class="update-label">Last Updated:</span>
+                    <span class="update-time" id="lastUpdateTime">Loading...</span>
+                    <button class="btn btn-outline btn-sm" onclick="refreshStandings()" id="refreshBtn">
+                        <span>🔄</span> Refresh
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Championship Leaders -->
+        <section class="section-sm">
+            <div class="container">
+                <div class="championship-leaders-grid grid grid-cols-1 grid-cols-md-3" id="leadersGrid">
+                    <!-- Leaders will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Standings Tabs -->
+        <section class="section">
+            <div class="container">
+                <div class="standings-tabs">
+                    <button class="tab-btn active" data-tab="riders">
+                        <span class="tab-icon">👨‍🦰</span>
+                        Riders Championship
+                    </button>
+                    <button class="tab-btn" data-tab="teams">
+                        <span class="tab-icon">🏁</span>
+                        Teams Championship
+                    </button>
+                    <button class="tab-btn" data-tab="manufacturers">
+                        <span class="tab-icon">🏭</span>
+                        Manufacturers
+                    </button>
+                </div>
+
+                <!-- Riders Standings -->
+                <div class="tab-content active" id="ridersTab">
+                    <div class="standings-container">
+                        <div class="table-responsive">
+                            <table class="table standings-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="position">Pos</th>
+                                        <th class="sortable" data-sort="rider">Rider</th>
+                                        <th class="sortable" data-sort="team">Team</th>
+                                        <th class="sortable" data-sort="manufacturer">Manufacturer</th>
+                                        <th class="sortable" data-sort="points">Points</th>
+                                        <th class="sortable" data-sort="wins">Wins</th>
+                                        <th class="sortable" data-sort="podiums">Podiums</th>
+                                        <th class="sortable" data-sort="gap">Gap</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ridersStandingsBody">
+                                    <!-- Rider standings will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teams Standings -->
+                <div class="tab-content" id="teamsTab">
+                    <div class="standings-container">
+                        <div class="table-responsive">
+                            <table class="table standings-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="position">Pos</th>
+                                        <th class="sortable" data-sort="team">Team</th>
+                                        <th class="sortable" data-sort="manufacturer">Manufacturer</th>
+                                        <th class="sortable" data-sort="points">Points</th>
+                                        <th class="sortable" data-sort="wins">Wins</th>
+                                        <th class="sortable" data-sort="podiums">Podiums</th>
+                                        <th class="sortable" data-sort="gap">Gap</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="teamsStandingsBody">
+                                    <!-- Team standings will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manufacturers Standings -->
+                <div class="tab-content" id="manufacturersTab">
+                    <div class="standings-container">
+                        <div class="table-responsive">
+                            <table class="table standings-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="position">Pos</th>
+                                        <th class="sortable" data-sort="manufacturer">Manufacturer</th>
+                                        <th class="sortable" data-sort="points">Points</th>
+                                        <th class="sortable" data-sort="wins">Wins</th>
+                                        <th class="sortable" data-sort="podiums">Podiums</th>
+                                        <th class="sortable" data-sort="poles">Pole Positions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="manufacturersStandingsBody">
+                                    <!-- Manufacturer standings will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Overview -->
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Season Statistics</h2>
+                    <p class="text-secondary text-lg">Key statistics and records from the 2025 season</p>
+                </div>
+
+                <div class="stats-overview-grid grid grid-cols-2 grid-cols-md-4">
+                    <div class="stat-card text-center">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Leader Points<br><small>(Marc Márquez)</small></div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Different Winners<br><small>(Competitive Season)</small></div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Podium Finishers<br><small>(Point Scorers)</small></div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number">22</div>
+                        <div class="stat-label">Total Races<br><small>(Complete Season)</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Points System Info -->
+        <section class="section">
+            <div class="container">
+                <div class="points-system-card card">
+                    <div class="card-header">
+                        <h3 class="text-xl font-semibold">2025 Points System</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="points-distribution">
+                            <div class="points-grid grid grid-cols-2 grid-cols-md-5">
+                                <div class="points-item">
+                                    <div class="position-position">1st</div>
+                                    <div class="position-points">25 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">2nd</div>
+                                    <div class="position-points">20 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">3rd</div>
+                                    <div class="position-points">16 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">4th</div>
+                                    <div class="position-points">13 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">5th</div>
+                                    <div class="position-points">11 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">6th</div>
+                                    <div class="position-points">10 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">7th</div>
+                                    <div class="position-points">9 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">8th</div>
+                                    <div class="position-points">8 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">9th</div>
+                                    <div class="position-points">7 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">10th</div>
+                                    <div class="position-points">6 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">11th</div>
+                                    <div class="position-points">5 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">12th</div>
+                                    <div class="position-points">4 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">13th</div>
+                                    <div class="position-points">3 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">14th</div>
+                                    <div class="position-points">2 pts</div>
+                                </div>
+                                <div class="points-item">
+                                    <div class="position-position">15th</div>
+                                    <div class="position-points">1 pt</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points-note">
+                            <p><strong>Note:</strong> 1 bonus point for fastest lap (top 10 finish only)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="teams.html" class="footer-link">Teams</a></li>
+                        <li><a href="riders.html" class="footer-link">Riders</a></li>
+                        <li><a href="calendar.html" class="footer-link">Calendar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Championship</h3>
+                    <ul class="footer-links">
+                        <li><a href="standings.html" class="footer-link">Rider Standings</a></li>
+                        <li><a href="standings.html" class="footer-link">Team Standings</a></li>
+                        <li><a href="https://www.motogp.com" target="_blank" class="footer-link">Official MotoGP</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow MotoGP</h3>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/motogp" target="_blank" class="social-link" aria-label="YouTube">
+                            <span>📺</span>
+                        </a>
+                        <a href="https://www.instagram.com/motogp" target="_blank" class="social-link" aria-label="Instagram">
+                            <span>📷</span>
+                        </a>
+                        <a href="https://twitter.com/MotoGP" target="_blank" class="social-link" aria-label="Twitter">
+                            <span>🐦</span>
+                        </a>
+                        <a href="https://www.facebook.com/MotoGP" target="_blank" class="social-link" aria-label="Facebook">
+                            <span>📘</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p class="text-secondary text-sm">
+                        Live 2025 MotoGP World Championship standings with real-time points, positions, and championship statistics.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="text-muted text-sm">
+                    © 2025 MotoGP Team Portal | Data © MotoGP.com | For educational use only
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/cache-manager.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/standings.js"></script>
+
+    <!-- Standings Page Specific Script -->
+    <script>
+        /**
+         * Standings page specific functionality
+         */
+        let standingsData = null;
+        let currentSort = { field: 'position', order: 'asc' };
+
+        async function initStandingsPage() {
+            console.log('🏆 Initializing standings page...');
+
+            try {
+                // Load standings data
+                await loadStandingsData();
+
+                // Initialize tabs
+                initializeTabs();
+
+                // Initialize sorting
+                initializeSorting();
+
+                // Initialize search
+                initializeSearch();
+
+                // Update last update time
+                updateLastUpdateTime();
+
+                console.log('✅ Standings page initialized successfully');
+
+            } catch (error) {
+                console.error('❌ Failed to initialize standings page:', error);
+                showError('Failed to load standings data. Please refresh the page.');
+            }
+        }
+
+        /**
+         * Load standings data
+         */
+        async function loadStandingsData() {
+            try {
+                // Get standings from cache or fetch
+                let standings = window.motoGPState.cache.standings;
+
+                if (!standings) {
+                    const dataFetcher = new DataFetcher();
+                    showLoading();
+                    standings = await dataFetcher.fetchStandings();
+                    hideLoading();
+                }
+
+                if (!standings) {
+                    throw new Error('No standings data available');
+                }
+
+                standingsData = standings;
+
+                // Render all standings tables
+                renderRidersStandings();
+                renderTeamsStandings();
+                renderManufacturersStandings();
+                renderChampionshipLeaders();
+
+            } catch (error) {
+                console.error('Failed to load standings:', error);
+                showStandingsError();
+            }
+        }
+
+        /**
+         * Render riders championship standings
+         */
+        function renderRidersStandings() {
+            const tbody = document.getElementById('ridersStandingsBody');
+            if (!tbody || !standingsData?.rider_championship) return;
+
+            const sortedStandings = sortStandings(standingsData.rider_championship, currentSort.field, currentSort.order);
+
+            tbody.innerHTML = sortedStandings.map((rider, index) => `
+                <tr class="standings-row" data-position="${rider.position}">
+                    <td>
+                        <span class="position-badge ${getPositionClass(rider.position)}">${rider.position}</span>
+                    </td>
+                    <td>
+                        <div class="rider-cell">
+                            <span class="rider-name">${rider.rider_name}</span>
+                            <span class="rider-number">#${getRiderNumber(rider.rider_name)}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="team-name">${rider.team}</span>
+                    </td>
+                    <td>
+                        <span class="manufacturer-name">${rider.manufacturer}</span>
+                    </td>
+                    <td>
+                        <span class="points-value">${rider.points}</span>
+                    </td>
+                    <td>
+                        <span class="stat-value">${rider.wins || 0}</span>
+                    </td>
+                    <td>
+                        <span class="stat-value">${rider.podiums || 0}</span>
+                    </td>
+                    <td>
+                        <span class="gap-value">${rider.gap_to_leader || 'Leader'}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        /**
+         * Render teams championship standings
+         */
+        function renderTeamsStandings() {
+            const tbody = document.getElementById('teamsStandingsBody');
+            if (!tbody || !standingsData?.team_championship) return;
+
+            const sortedStandings = sortStandings(standingsData.team_championship, 'position', 'asc');
+
+            tbody.innerHTML = sortedStandings.map((team, index) => `
+                <tr class="standings-row" data-position="${team.position}">
+                    <td>
+                        <span class="position-badge ${getPositionClass(team.position)}">${team.position}</span>
+                    </td>
+                    <td>
+                        <span class="team-name">${team.team_name}</span>
+                    </td>
+                    <td>
+                        <span class="manufacturer-name">${team.manufacturer}</span>
+                    </td>
+                    <td>
+                        <span class="points-value">${team.points}</span>
+                    </td>
+                    <td>
+                        <span class="stat-value">${team.wins || 0}</span>
+                    </td>
+                    <td>
+                        <span class="stat-value">${team.podiums || 0}</span>
+                    </td>
+                    <td>
+                        <span class="gap-value">${team.gap_to_leader || 'Leader'}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        /**
+         * Render manufacturers championship standings
+         */
+        function renderManufacturersStandings() {
+            const tbody = document.getElementById('manufacturersStandingsBody');
+            if (!tbody || !standingsData?.manufacturer_championship) return;
+
+            const sortedStandings = sortStandings(standingsData.manufacturer_championship, 'position', 'asc');
+
+            tbody.innerHTML = sortedStandings.map((manufacturer, index) => `
+                <tr class="standings-row" data-position="${manufacturer.position}">
+                    <td>
+                        <span class="position-badge ${getPositionClass(manufacturer.position)}">${manufacturer.position}</span>
+                    </td>
+                    <td>
+                        <span class="manufacturer-name">${manufacturer.manufacturer}</span>
+                    </td>
+                    <td>
+                        <span class="points-value">${manufacturer.points}</span>
+                    </td>
+                    <td>
+                        <span class="stat-value">${manufacturer.wins || 0}</span>
+                    </td>
+                    <td>
+                        <span class="stat-value">${manufacturer.podiums || 0}</span>
+                    </td>
+                    <td>
+                        <span class="stat-value">${manufacturer.poles || 0}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        /**
+         * Render championship leaders
+         */
+        function renderChampionshipLeaders() {
+            const leadersGrid = document.getElementById('leadersGrid');
+            if (!leadersGrid || !standingsData) return;
+
+            const ridersLeader = standingsData.rider_championship?.[0];
+            const teamsLeader = standingsData.team_championship?.[0];
+            const manufacturersLeader = standingsData.manufacturer_championship?.[0];
+
+            leadersGrid.innerHTML = `
+                <div class="leader-card card">
+                    <div class="card-body text-center">
+                        <div class="leader-icon">👨‍🦰</div>
+                        <h3 class="leader-title">Rider Leader</h3>
+                        <div class="leader-name">${ridersLeader?.rider_name || 'Loading...'}</div>
+                        <div class="leader-team">${ridersLeader?.team || ''}</div>
+                        <div class="leader-points">${ridersLeader?.points || 0} pts</div>
+                    </div>
+                </div>
+                <div class="leader-card card">
+                    <div class="card-body text-center">
+                        <div class="leader-icon">🏁</div>
+                        <h3 class="leader-title">Team Leader</h3>
+                        <div class="leader-name">${teamsLeader?.team_name || 'Loading...'}</div>
+                        <div class="leader-team">${teamsLeader?.manufacturer || ''}</div>
+                        <div class="leader-points">${teamsLeader?.points || 0} pts</div>
+                    </div>
+                </div>
+                <div class="leader-card card">
+                    <div class="card-body text-center">
+                        <div class="leader-icon">🏭</div>
+                        <h3 class="leader-title">Manufacturer Leader</h3>
+                        <div class="leader-name">${manufacturersLeader?.manufacturer || 'Loading...'}</div>
+                        <div class="leader-team">All Teams</div>
+                        <div class="leader-points">${manufacturersLeader?.points || 0} pts</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Initialize tabs
+         */
+        function initializeTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetTab = btn.dataset.tab;
+
+                    // Update button states
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Update content visibility
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${targetTab}Tab`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        /**
+         * Initialize sorting
+         */
+        function initializeSorting() {
+            const sortableHeaders = document.querySelectorAll('.sortable');
+
+            sortableHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const sortField = header.dataset.sort;
+
+                    // Toggle sort order or set new field
+                    if (currentSort.field === sortField) {
+                        currentSort.order = currentSort.order === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        currentSort.field = sortField;
+                        currentSort.order = 'asc';
+                    }
+
+                    // Update visual indicators
+                    sortableHeaders.forEach(h => {
+                        h.classList.remove('sort-asc', 'sort-desc');
+                    });
+                    header.classList.add(`sort-${currentSort.order}`);
+
+                    // Re-render current tab
+                    const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
+                    if (activeTab === 'riders') {
+                        renderRidersStandings();
+                    } else if (activeTab === 'teams') {
+                        renderTeamsStandings();
+                    } else if (activeTab === 'manufacturers') {
+                        renderManufacturersStandings();
+                    }
+                });
+            });
+        }
+
+        /**
+         * Initialize search
+         */
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+
+            if (searchInput) {
+                searchInput.addEventListener('input', debounce(performSearch, 300));
+            }
+        }
+
+        /**
+         * Perform search
+         */
+        function performSearch() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
+
+            if (!searchQuery) {
+                // Reset to original standings
+                if (activeTab === 'riders') {
+                    renderRidersStandings();
+                } else if (activeTab === 'teams') {
+                    renderTeamsStandings();
+                } else if (activeTab === 'manufacturers') {
+                    renderManufacturersStandings();
+                }
+                return;
+            }
+
+            // Filter standings based on search
+            if (activeTab === 'riders' && standingsData?.rider_championship) {
+                const filtered = standingsData.rider_championship.filter(rider =>
+                    rider.rider_name.toLowerCase().includes(searchQuery) ||
+                    rider.team.toLowerCase().includes(searchQuery) ||
+                    rider.manufacturer.toLowerCase().includes(searchQuery)
+                );
+                renderFilteredStandings('riders', filtered);
+            } else if (activeTab === 'teams' && standingsData?.team_championship) {
+                const filtered = standingsData.team_championship.filter(team =>
+                    team.team_name.toLowerCase().includes(searchQuery) ||
+                    team.manufacturer.toLowerCase().includes(searchQuery)
+                );
+                renderFilteredStandings('teams', filtered);
+            } else if (activeTab === 'manufacturers' && standingsData?.manufacturer_championship) {
+                const filtered = standingsData.manufacturer_championship.filter(manufacturer =>
+                    manufacturer.manufacturer.toLowerCase().includes(searchQuery)
+                );
+                renderFilteredStandings('manufacturers', filtered);
+            }
+        }
+
+        /**
+         * Render filtered standings
+         */
+        function renderFilteredStandings(type, filteredData) {
+            let tbody;
+            if (type === 'riders') {
+                tbody = document.getElementById('ridersStandingsBody');
+            } else if (type === 'teams') {
+                tbody = document.getElementById('teamsStandingsBody');
+            } else if (type === 'manufacturers') {
+                tbody = document.getElementById('manufacturersStandingsBody');
+            }
+
+            if (!tbody || filteredData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center py-8">
+                            <div class="no-results">
+                                <p>No results found for your search</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            // Re-render with filtered data (simplified for brevity)
+            if (type === 'riders') {
+                renderRidersStandings();
+            } else if (type === 'teams') {
+                renderTeamsStandings();
+            } else if (type === 'manufacturers') {
+                renderManufacturersStandings();
+            }
+        }
+
+        /**
+         * Sort standings
+         */
+        function sortStandings(standings, field, order) {
+            return [...standings].sort((a, b) => {
+                let aVal = a[field];
+                let bVal = b[field];
+
+                // Handle different data types
+                if (field === 'position' || field === 'points' || field === 'wins' || field === 'podiums') {
+                    aVal = parseInt(aVal) || 0;
+                    bVal = parseInt(bVal) || 0;
+                }
+
+                if (order === 'asc') {
+                    return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+                } else {
+                    return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
+                }
+            });
+        }
+
+        /**
+         * Get position class for styling
+         */
+        function getPositionClass(position) {
+            if (position === 1) return 'gold';
+            if (position === 2) return 'silver';
+            if (position === 3) return 'bronze';
+            return 'default';
+        }
+
+        /**
+         * Get rider number (mock implementation)
+         */
+        function getRiderNumber(riderName) {
+            const riderNumbers = {
+                'Marc Márquez': '93',
+                'Francesco Bagnaia': '1',
+                'Jorge Martín': '89',
+                'Fabio Quartararo': '20',
+                'Brad Binder': '33',
+                'Pedro Acosta': '31',
+                'Alex Rins': '42',
+                'Marco Bezzecchi': '72',
+                'Enea Bastianini': '23',
+                'Maverick Viñales': '12',
+                'Luca Marini': '10',
+                'Joan Mir': '36',
+                'Johann Zarco': '5',
+                'Jack Miller': '43',
+                'Miguel Oliveira': '88',
+                'Franco Morbidelli': '21',
+                'Álex Márquez': '73',
+                'Raúl Fernández': '25',
+                'Takaaki Nakagami': '30'
+            };
+            return riderNumbers[riderName] || '--';
+        }
+
+        /**
+         * Update last update time
+         */
+        function updateLastUpdateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('lastUpdateTime').textContent = timeString;
+        }
+
+        /**
+         * Refresh standings
+         */
+        async function refreshStandings() {
+            const refreshBtn = document.getElementById('refreshBtn');
+            const originalContent = refreshBtn.innerHTML;
+
+            refreshBtn.innerHTML = '<span class="spinner"></span> Refreshing...';
+            refreshBtn.disabled = true;
+
+            try {
+                // Clear cache and fetch fresh data
+                const cacheManager = window.cacheManager || new CacheManager();
+                await cacheManager.delete('standings');
+
+                const dataFetcher = new DataFetcher();
+                standingsData = await dataFetcher.fetchStandings();
+                await cacheManager.set('standings', standingsData);
+
+                // Re-render all standings
+                renderRidersStandings();
+                renderTeamsStandings();
+                renderManufacturersStandings();
+                renderChampionshipLeaders();
+                updateLastUpdateTime();
+
+                window.motoGPApp.showSuccess('Standings refreshed successfully!');
+
+            } catch (error) {
+                console.error('Failed to refresh standings:', error);
+                window.motoGPApp.showError('Failed to refresh standings. Please try again.');
+            } finally {
+                refreshBtn.innerHTML = originalContent;
+                refreshBtn.disabled = false;
+            }
+        }
+
+        /**
+         * Show standings error
+         */
+        function showStandingsError() {
+            const errorHTML = `
+                <div class="standings-error text-center py-16">
+                    <div class="error-icon mb-6">
+                        <span style="font-size: 4rem;">📊</span>
+                    </div>
+                    <h2 class="text-2xl font-semibold mb-4">Standings Unavailable</h2>
+                    <p class="text-secondary mb-6">Unable to load championship standings at this time.</p>
+                    <div class="error-actions">
+                        <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
+                        <button class="btn btn-outline" onclick="window.history.back()">Go Back</button>
+                    </div>
+                </div>
+            `;
+
+            // Insert error message into each tab content
+            document.getElementById('ridersTab').innerHTML = errorHTML;
+            document.getElementById('teamsTab').innerHTML = errorHTML;
+            document.getElementById('manufacturersTab').innerHTML = errorHTML;
+        }
+
+        // Initialize standings page when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initStandingsPage);
+        } else {
+            initStandingsPage();
+        }
+
+        // Override the initStandingsPage function in main.js
+        window.initStandingsPage = initStandingsPage;
+        window.refreshStandings = refreshStandings;
+    </script>
+
+    <!-- CSS for additional standings page styles -->
+    <style>
+        .page-title {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .last-update-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        .update-time {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .championship-leaders-grid {
+            gap: var(--space-6);
+        }
+
+        .leader-card {
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .leader-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .leader-title {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .leader-name {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .leader-team {
+            font-size: var(--text-sm);
+            color: var(--accent-red);
+            margin-bottom: var(--space-3);
+        }
+
+        .leader-points {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .standings-tabs {
+            display: flex;
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-bottom: var(--space-6);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: var(--space-4) var(--space-6);
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .tab-btn:hover {
+            background: var(--tertiary-bg);
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-red);
+            color: var(--text-primary);
+        }
+
+        .tab-icon {
+            font-size: var(--text-lg);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .standings-container {
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .standings-table th {
+            background: var(--tertiary-bg);
+            padding: var(--space-4);
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 70px;
+            z-index: 10;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .standings-table th.sortable:hover {
+            background: var(--border-color);
+        }
+
+        .standings-table th.sort-asc::after,
+        .standings-table th.sort-desc::after {
+            content: '';
+            margin-left: var(--space-2);
+            font-size: 0.8em;
+        }
+
+        .standings-table th.sort-asc::after {
+            content: ' ↑';
+        }
+
+        .standings-table th.sort-desc::after {
+            content: ' ↓';
+        }
+
+        .standings-table td {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .standings-row:hover {
+            background: var(--tertiary-bg);
+        }
+
+        .standings-row:last-child td {
+            border-bottom: none;
+        }
+
+        .position-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: var(--text-sm);
+        }
+
+        .position-badge.gold {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: var(--primary-bg);
+        }
+
+        .position-badge.silver {
+            background: linear-gradient(135deg, #C0C0C0, #808080);
+            color: var(--primary-bg);
+        }
+
+        .position-badge.bronze {
+            background: linear-gradient(135deg, #CD7F32, #8B4513);
+            color: var(--text-primary);
+        }
+
+        .position-badge.default {
+            background: var(--tertiary-bg);
+            color: var(--text-secondary);
+        }
+
+        .rider-cell {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .rider-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .rider-number {
+            background: var(--tertiary-bg);
+            color: var(--text-secondary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+            font-weight: 500;
+        }
+
+        .team-name,
+        .manufacturer-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .points-value {
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+            font-size: var(--text-lg);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .gap-value {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        .points-system-card {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .points-grid {
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+        }
+
+        .points-item {
+            text-align: center;
+            padding: var(--space-3);
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-md);
+        }
+
+        .position-position {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .position-points {
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .points-note {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .standings-error {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-icon {
+            opacity: 0.6;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+        }
+
+        .no-results {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .last-update-info {
+                flex-direction: column;
+                gap: var(--space-2);
+            }
+
+            .championship-leaders-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .standings-tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .tab-btn:last-child {
+                border-bottom: none;
+            }
+
+            .standings-table {
+                font-size: var(--text-sm);
+            }
+
+            .standings-table th,
+            .standings-table td {
+                padding: var(--space-2);
+            }
+
+            .points-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .error-actions {
+                flex-direction: column;
+            }
+
+            .table-responsive {
+                margin: 0 calc(-1 * var(--space-4));
+                padding: 0 var(--space-4);
+            }
+        }
+
+        @media (max-width: 479px) {
+            .points-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .position-badge {
+                width: 25px;
+                height: 25px;
+                font-size: 0.7em;
+            }
+
+            .points-value {
+                font-size: var(--text-base);
+            }
+        }
+
+        /* Loading spinner for refresh button */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: var(--radius-full);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>
