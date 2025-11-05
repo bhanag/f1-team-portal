@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - MotoGP Team Portal</title>
+    <meta name="description" content="Get in touch with the MotoGP Team Portal team for questions, feedback, or inquiries">
+    <meta name="keywords" content="MotoGP, contact, feedback, support, questions, inquiries">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+
+    <!-- Theme -->
+    <script>
+        const theme = localStorage.getItem('motogp-theme') ||
+                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span style="font-size: 24px;">🏍️</span>
+                </div>
+                <span>MotoGP Portal</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="teams.html" class="nav-link">Teams</a></li>
+                    <li><a href="riders.html" class="nav-link">Riders</a></li>
+                    <li><a href="calendar.html" class="nav-link">Calendar</a></li>
+                    <li><a href="standings.html" class="nav-link">Standings</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Theme -->
+            <div class="header-actions">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search..." id="searchInput">
+                </div>
+
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
+            <li><a href="riders.html" class="mobile-nav-link">Riders</a></li>
+            <li><a href="calendar.html" class="mobile-nav-link">Calendar</a></li>
+            <li><a href="standings.html" class="mobile-nav-link">Standings</a></li>
+            <li><a href="contact.html" class="mobile-nav-link active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Page Header -->
+        <section class="section section-sm">
+            <div class="container text-center">
+                <h1 class="page-title text-4xl font-bold mb-4">Contact Us</h1>
+                <p class="page-subtitle text-xl text-secondary mb-6">Get in touch with the MotoGP Team Portal team</p>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid grid grid-cols-1 grid-cols-md-2">
+                    <!-- Contact Form -->
+                    <div class="contact-form-section">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="text-2xl font-semibold mb-2">Send us a Message</h2>
+                                <p class="text-secondary">We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
+                            </div>
+                            <div class="card-body">
+                                <form id="contactForm" class="contact-form">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Your Name *</label>
+                                        <input type="text" id="name" name="name" class="form-input" required placeholder="John Doe">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" id="email" name="email" class="form-input" required placeholder="john.doe@example.com">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="subject" class="form-label">Subject *</label>
+                                        <select id="subject" name="subject" class="form-select" required>
+                                            <option value="">Select a topic</option>
+                                            <option value="general">General Inquiry</option>
+                                            <option value="feedback">Feedback</option>
+                                            <option value="bug">Bug Report</option>
+                                            <option value="feature">Feature Request</option>
+                                            <option value="partnership">Partnership</option>
+                                            <option value="media">Media Inquiry</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="message" class="form-label">Message *</label>
+                                        <textarea id="message" name="message" class="form-input" rows="5" required placeholder="Tell us what's on your mind..."></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-checkbox">
+                                            <input type="checkbox" id="newsletter" name="newsletter">
+                                            <label for="newsletter" class="form-checkbox-label">
+                                                I'd like to receive updates about the MotoGP Team Portal
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                            Send Message
+                                        </button>
+                                        <button type="button" class="btn btn-outline" onclick="resetForm()">
+                                            Clear Form
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-info-section">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="text-2xl font-semibold mb-2">Get in Touch</h2>
+                                <p class="text-secondary">Reach out through any of these channels</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <div class="contact-icon">📧</div>
+                                        <div class="contact-details">
+                                            <h3 class="contact-title">Email</h3>
+                                            <p class="contact-value">info@motogp-portal.com</p>
+                                            <p class="contact-note">We'll respond within 24 hours</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-method">
+                                        <div class="contact-icon">🐦</div>
+                                        <div class="contact-details">
+                                            <h3 class="contact-title">Twitter</h3>
+                                            <p class="contact-value">@MotoGPPortal</p>
+                                            <p class="contact-note">Follow us for updates</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-method">
+                                        <div class="contact-icon">🌐</div>
+                                        <div class="contact-details">
+                                            <h3 class="contact-title">Website</h3>
+                                            <p class="contact-value">motogp-portal.com</p>
+                                            <p class="contact-note">Your source for MotoGP info</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-method">
+                                        <div class="contact-icon">📊</div>
+                                        <div class="contact-details">
+                                            <h3 class="contact-title">Data Source</h3>
+                                            <p class="contact-value">motogp.com</p>
+                                            <p class="contact-note">Official MotoGP data</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="quick-links">
+                                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                                    <ul class="contact-links">
+                                        <li><a href="https://www.motogp.com" target="_blank" class="contact-link">Official MotoGP Website</a></li>
+                                        <li><a href="https://www.motogp.com/en/contacts" target="_blank" class="contact-link">MotoGP Media Department</a></li>
+                                        <li><a href="https://www.dorna.com" target="_blank" class="contact-link">Dorna Sports</a></li>
+                                        <li><a href="teams.html" class="contact-link">Browse Teams</a></li>
+                                        <li><a href="riders.html" class="contact-link">Browse Riders</a></li>
+                                        <li><a href="calendar.html" class="contact-link">Race Calendar</a></li>
+                                        <li><a href="standings.html" class="contact-link">Championship Standings</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                    <p class="text-secondary text-lg">Common questions about the MotoGP Team Portal</p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>What is the MotoGP Team Portal?</span>
+                            <span class="faq-toggle">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The MotoGP Team Portal is a comprehensive web application that provides real-time information about the MotoGP World Championship. It features team details, rider profiles, race calendars, championship standings, and more - all sourced from official MotoGP data.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How current is the data on the portal?</span>
+                            <span class="faq-toggle">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We strive to keep our data as current as possible. The portal automatically refreshes data every 30 minutes during race weekends and every 6 hours during the regular season. All data is sourced directly from official MotoGP channels.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Is this the official MotoGP website?</span>
+                            <span class="faq-toggle">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, this is an independent educational project that aggregates and displays MotoGP data for informational purposes. For the official MotoGP website, please visit <a href="https://www.motogp.com" target="_blank" class="link">motogp.com</a>.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Can I use the data from this portal?</span>
+                            <span class="faq-toggle">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>All data displayed on this portal is sourced from official MotoGP channels and is provided for educational and informational purposes only. For any commercial use, please contact the official MotoGP organization directly.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How can I report an error or bug?</span>
+                            <span class="faq-toggle">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We appreciate your help in improving the portal! Please use the contact form above to report any errors, bugs, or suggest improvements. You can also reach out to us on Twitter @MotoGPPortal.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Do you have a mobile app?</span>
+                            <span class="faq-toggle">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Currently, the MotoGP Team Portal is available as a responsive web application that works seamlessly on all devices, including mobile phones and tablets. We're exploring the possibility of developing dedicated mobile apps in the future.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Information -->
+        <section class="section">
+            <div class="container">
+                <div class="project-info-grid grid grid-cols-1 grid-cols-md-3">
+                    <div class="info-card card text-center">
+                        <div class="card-body">
+                            <div class="info-icon">🎯</div>
+                            <h3 class="text-xl font-semibold mb-2">Our Mission</h3>
+                            <p class="text-secondary">To provide MotoGP fans with accurate, up-to-date information in an accessible and user-friendly format, making championship data easily available to everyone.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card card text-center">
+                        <div class="card-body">
+                            <div class="info-icon">📊</div>
+                            <h3 class="text-xl font-semibold mb-2">Data Accuracy</h3>
+                            <p class="text-secondary">All data is sourced from official MotoGP channels and updated regularly. We use multiple fallback systems to ensure reliability and accuracy.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card card text-center">
+                        <div class="card-body">
+                            <div class="info-icon">🚀</div>
+                            <h3 class="text-xl font-semibold mb-2">Technology</h3>
+                            <p class="text-secondary">Built with modern web technologies using vanilla HTML5, CSS3, and JavaScript. No frameworks required - just pure web standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="teams.html" class="footer-link">Teams</a></li>
+                        <li><a href="riders.html" class="footer-link">Riders</a></li>
+                        <li><a href="calendar.html" class="footer-link">Calendar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="standings.html" class="footer-link">Standings</a></li>
+                        <li><a href="https://www.motogp.com" target="_blank" class="footer-link">Official MotoGP</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/motogp" target="_blank" class="social-link" aria-label="YouTube">
+                            <span>📺</span>
+                        </a>
+                        <a href="https://www.instagram.com/motogp" target="_blank" class="social-link" aria-label="Instagram">
+                            <span>📷</span>
+                        </a>
+                        <a href="https://twitter.com/MotoGP" target="_blank" class="social-link" aria-label="Twitter">
+                            <span>🐦</span>
+                        </a>
+                        <a href="https://www.facebook.com/MotoGP" target="_blank" class="social-link" aria-label="Facebook">
+                            <span>📘</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p class="text-secondary text-sm">
+                        Educational MotoGP portal providing comprehensive championship information, team details, rider profiles, and real-time standings.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="text-muted text-sm">
+                    © 2025 MotoGP Team Portal | Data © MotoGP.com | For educational use only
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Message Sent!</h3>
+                <button class="modal-close" onclick="closeModal('successModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-message">
+                    <div class="success-icon">✅</div>
+                    <p>Thank you for contacting us! We've received your message and will get back to you within 24 hours.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('successModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script src="js/cache-manager.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Contact Page Specific Script -->
+    <script>
+        /**
+         * Contact page specific functionality
+         */
+        function initContactPage() {
+            console.log('📧 Initializing contact page...');
+
+            try {
+                // Initialize contact form
+                initializeContactForm();
+
+                // Initialize search functionality
+                initializeSearch();
+
+                console.log('✅ Contact page initialized successfully');
+
+            } catch (error) {
+                console.error('❌ Failed to initialize contact page:', error);
+                showError('Failed to initialize contact page. Please refresh the page.');
+            }
+        }
+
+        /**
+         * Initialize contact form
+         */
+        function initializeContactForm() {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (form) {
+                form.addEventListener('submit', handleFormSubmit);
+            }
+        }
+
+        /**
+         * Handle form submission
+         */
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const formData = new FormData(form);
+
+            // Get form values
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message'),
+                newsletter: formData.get('newsletter') === 'on'
+            };
+
+            // Validate form
+            if (!validateForm(data)) {
+                return;
+            }
+
+            // Show loading state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                // Simulate form submission (in a real application, this would send to a server)
+                await simulateFormSubmission(data);
+
+                // Show success message
+                showSuccessModal();
+
+                // Reset form
+                form.reset();
+
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showError('Failed to send message. Please try again.');
+            } finally {
+                // Restore button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        /**
+         * Validate form data
+         */
+        function validateForm(data) {
+            const errors = [];
+
+            if (!data.name || data.name.trim().length < 2) {
+                errors.push('Please enter your name');
+            }
+
+            if (!data.email || !isValidEmail(data.email)) {
+                errors.push('Please enter a valid email address');
+            }
+
+            if (!data.subject) {
+                errors.push('Please select a subject');
+            }
+
+            if (!data.message || data.message.trim().length < 10) {
+                errors.push('Please enter a message (at least 10 characters)');
+            }
+
+            if (errors.length > 0) {
+                showError(errors.join('. '));
+                return false;
+            }
+
+            return true;
+        }
+
+        /**
+         * Validate email format
+         */
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        /**
+         * Simulate form submission
+         */
+        function simulateFormSubmission(data) {
+            return new Promise((resolve) => {
+                // Simulate network delay
+                setTimeout(() => {
+                    console.log('Form data submitted:', data);
+                    resolve();
+                }, 1500);
+            });
+        }
+
+        /**
+         * Show success modal
+         */
+        function showSuccessModal() {
+            const modal = document.getElementById('successModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        /**
+         * Close modal
+         */
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        /**
+         * Reset form
+         */
+        function resetForm() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.reset();
+            }
+        }
+
+        /**
+         * Toggle FAQ item
+         */
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const toggle = button.querySelector('.faq-toggle');
+
+            if (answer && toggle) {
+                const isOpen = answer.classList.contains('open');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('open');
+                });
+                document.querySelectorAll('.faq-toggle').forEach(item => {
+                    item.textContent = '+';
+                });
+
+                // Toggle current item
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    toggle.textContent = '-';
+                } else {
+                    answer.classList.remove('open');
+                    toggle.textContent = '+';
+                }
+            }
+        }
+
+        /**
+         * Initialize search functionality
+         */
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', debounce(performSearch, 300));
+            }
+        }
+
+        /**
+         * Perform search
+         */
+        function performSearch() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+
+            if (searchQuery) {
+                // For now, just show a message about search functionality
+                console.log('Search query:', searchQuery);
+                // In a real implementation, this would search across the site
+            }
+        }
+
+        // Initialize contact page when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initContactPage);
+        } else {
+            initContactPage();
+        }
+
+        // Make functions available globally
+        window.resetForm = resetForm;
+        window.toggleFAQ = toggleFAQ;
+        window.closeModal = closeModal;
+
+        // Override the initContactPage function in main.js
+        window.initContactPage = initContactPage;
+    </script>
+
+    <!-- CSS for additional contact page styles -->
+    <style>
+        .page-title {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-grid {
+            gap: var(--space-8);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+        }
+
+        .form-checkbox-label {
+            color: var(--text-primary);
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: flex-start;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-normal);
+        }
+
+        .contact-method:hover {
+            background: var(--secondary-bg);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-red);
+            color: var(--text-primary);
+            border-radius: var(--radius-full);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-title {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .contact-value {
+            color: var(--accent-red);
+            font-weight: 500;
+            margin-bottom: var(--space-1);
+        }
+
+        .contact-note {
+            font-size: var(--text-sm);
+            color: var(--text-muted);
+        }
+
+        .quick-links {
+            border-top: 1px solid var(--border-color);
+            padding-top: var(--space-6);
+        }
+
+        .contact-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            padding: var(--space-2) 0;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-red);
+        }
+
+        .link {
+            color: var(--accent-red);
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: var(--space-4);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-5);
+            background: var(--secondary-bg);
+            border: none;
+            color: var(--text-primary);
+            font-size: var(--text-lg);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            background: var(--tertiary-bg);
+        }
+
+        .faq-toggle {
+            font-size: var(--text-xl);
+            color: var(--accent-red);
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal);
+            padding: 0 var(--space-5);
+            background: var(--primary-bg);
+        }
+
+        .faq-answer.open {
+            max-height: 300px;
+            padding: var(--space-5);
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-info-grid {
+            gap: var(--space-6);
+        }
+
+        .info-card {
+            transition: all var(--transition-normal);
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .success-message {
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-4);
+            color: #28a745;
+        }
+
+        .success-message p {
+            font-size: var(--text-lg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: var(--radius-full);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+            }
+
+            .contact-method {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-3);
+            }
+
+            .contact-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                font-size: var(--text-base);
+                padding: var(--space-4);
+            }
+
+            .project-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 479px) {
+            .contact-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</body>
+</html>
