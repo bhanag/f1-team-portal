@@ -1,0 +1,150 @@
+{
+  "version": "2025.1.0",
+  "last_updated": "2025-01-15T00:00:00Z",
+  "teams": [
+    {
+      "id": "ducati-lenovo",
+      "name": "Ducati Lenovo Team",
+      "manufacturer": "Ducati",
+      "base": "Bologna, Italy",
+      "team_principal": "Davide Tardozzi",
+      "website": "https://www.ducati.com",
+      "logo": "/images/logos/ducati-lenovo.png",
+      "color": "#DC143C",
+      "hero_image": "/images/heroes/ducati-hero.jpg",
+      "riders": ["francesco-bagnaia", "marc-marquez"]
+    },
+    {
+      "id": "aprilia-racing",
+      "name": "Aprilia Racing",
+      "manufacturer": "Aprilia",
+      "base": "Noale, Italy",
+      "team_principal": "Massimo Rivola",
+      "website": "https://www.aprilia.com",
+      "logo": "/images/logos/aprilia-racing.png",
+      "color": "#4A90E2",
+      "hero_image": "/images/heroes/aprilia-hero.jpg",
+      "riders": ["jorge-martin", "marco-bezzecchi"]
+    },
+    {
+      "id": "monster-yamaha",
+      "name": "Monster Energy Yamaha MotoGP",
+      "manufacturer": "Yamaha",
+      "base": "Iwata, Japan",
+      "team_principal": "Lin Jarvis",
+      "website": "https://www.yamaha-racing.com",
+      "logo": "/images/logos/yamaha-monster.png",
+      "color": "#0066CC",
+      "hero_image": "/images/heroes/yamaha-hero.jpg",
+      "riders": ["fabio-quartararo", "alex-rins"]
+    },
+    {
+      "id": "redbull-ktm",
+      "name": "Red Bull KTM Factory Racing",
+      "manufacturer": "KTM",
+      "base": "Mattighofen, Austria",
+      "team_principal": "Francesco Guidotti",
+      "website": "https://www.ktm.com",
+      "logo": "/images/logos/ktm-redbull.png",
+      "color": "#FF6600",
+      "hero_image": "/images/heroes/ktm-hero.jpg",
+      "riders": ["brad-binder", "pedro-acosta"]
+    },
+    {
+      "id": "honda-castrol",
+      "name": "Honda HRC Castrol",
+      "manufacturer": "Honda",
+      "base": "Aoyama, Japan",
+      "team_principal": "Alberto Puig",
+      "website": "https://www.hondaracing.com",
+      "logo": "/images/logos/honda-castrol.png",
+      "color": "#FF8C00",
+      "hero_image": "/images/heroes/honda-hero.jpg",
+      "riders": ["luca-marini", "joan-mir"]
+    },
+    {
+      "id": "lcr-honda",
+      "name": "LCR Honda",
+      "manufacturer": "Honda",
+      "base": "Montichiari, Italy",
+      "team_principal": "Lucio Cecchinello",
+      "website": "https://www.lcrhonda.com",
+      "logo": "/images/logos/lcr-honda.png",
+      "color": "#FFD700",
+      "hero_image": "/images/heroes/lcr-hero.jpg",
+      "riders": ["johann-zarco", "somkiat-chantra"]
+    },
+    {
+      "id": "gresini-racing",
+      "name": "BK8 Gresini Racing MotoGP",
+      "manufacturer": "Ducati",
+      "base": "Faenza, Italy",
+      "team_principal": "Nadia Gresini",
+      "website": "https://www.gresiniracing.com",
+      "logo": "/images/logos/gresini-bk8.png",
+      "color": "#8B0000",
+      "hero_image": "/images/heroes/gresini-hero.jpg",
+      "riders": ["fermin-aldeguer", "alex-marquez"]
+    },
+    {
+      "id": "vr46-racing",
+      "name": "Pertamina Enduro VR46 Racing Team",
+      "manufacturer": "Ducati",
+      "base": "Tavullia, Italy",
+      "team_principal": "Uccio Salucci",
+      "website": "https://www.vr46.com",
+      "logo": "/images/logos/vr46-pertamina.png",
+      "color": "#FFD700",
+      "hero_image": "/images/heroes/vr46-hero.jpg",
+      "riders": ["franco-morbidelli", "fabio-di-giannantonio"]
+    },
+    {
+      "id": "prima-pramac",
+      "name": "Prima Pramac Yamaha MotoGP",
+      "manufacturer": "Yamaha",
+      "base": "Casole d'Elsa, Italy",
+      "team_principal": "Francesco Neri",
+      "website": "https://www.pramacracing.com",
+      "logo": "/images/logos/pramac-yamaha.png",
+      "color": "#003366",
+      "hero_image": "/images/heroes/pramac-hero.jpg",
+      "riders": ["jack-miller", "miguel-oliveira"]
+    },
+    {
+      "id": "ktm-tech3",
+      "name": "Red Bull KTM Tech3",
+      "manufacturer": "KTM",
+      "base": "Bormes-les-Mimosas, France",
+      "team_principal": "Herve Poncharal",
+      "website": "https://www.tech3racing.com",
+      "logo": "/images/logos/tech3-ktm.png",
+      "color": "#003300",
+      "hero_image": "/images/heroes/tech3-hero.jpg",
+      "riders": ["maverick-vinales", "enea-bastianini"]
+    },
+    {
+      "id": "trackhouse",
+      "name": "Trackhouse MotoGP Team",
+      "manufacturer": "Aprilia",
+      "base": "Statesville, USA",
+      "team_principal": "Justin Marks",
+      "website": "https://www.trackhousemotorsports.com",
+      "logo": "/images/logos/trackhouse.png",
+      "color": "#000000",
+      "hero_image": "/images/heroes/trackhouse-hero.jpg",
+      "riders": ["raul-fernandez", "takaaki-nakagami"]
+    },
+    {
+      "id": "rnf-racing",
+      "name": "RNF Racing",
+      "manufacturer": "Ducati",
+      "base": "Barcelona, Spain",
+      "team_principal": "Razlan Razali",
+      "website": "https://www.rnfmotorsport.com",
+      "logo": "/images/logos/rnf-ducati.png",
+      "color": "#004080",
+      "hero_image": "/images/heroes/rnf-hero.jpg",
+      "riders": ["miguel-oliveira", "raul-fernandez"]
+    }
+  ]
+}
