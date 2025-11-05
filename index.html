@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGP Team Portal - Official 2025 Teams & Riders</title>
+    <meta name="description" content="Official MotoGP 2025 Team Portal - Explore all teams, riders, calendar, and championship standings. Live data from MotoGP.com">
+    <meta name="keywords" content="MotoGP, 2025, teams, riders, championship, standings, calendar, motorcycle racing">
+    <meta name="author" content="MotoGP Team Portal">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MotoGP Team Portal - Official 2025 Teams & Riders">
+    <meta property="og:description" content="Explore official MotoGP 2025 teams, riders, and championship standings">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://motogp-team-portal.com">
+    <meta property="og:image" content="/images/heroes/motogp-hero-bg.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MotoGP Team Portal - Official 2025 Teams & Riders">
+    <meta name="twitter:description" content="Explore official MotoGP 2025 teams, riders, and championship standings">
+    <meta name="twitter:image" content="/images/heroes/motogp-hero-bg.jpg">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+    <link rel="icon" type="image/png" href="/images/fallback/favicon.png">
+
+    <!-- Theme -->
+    <script>
+        // Set theme before page load to prevent flash
+        const theme = localStorage.getItem('motogp-theme') ||
+                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading MotoGP Portal...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span style="font-size: 24px;">🏍️</span>
+                </div>
+                <span>MotoGP Portal</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="teams.html" class="nav-link">Teams</a></li>
+                    <li><a href="riders.html" class="nav-link">Riders</a></li>
+                    <li><a href="calendar.html" class="nav-link">Calendar</a></li>
+                    <li><a href="standings.html" class="nav-link">Standings</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Theme -->
+            <div class="header-actions">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search teams or riders..." id="searchInput">
+                </div>
+
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+            <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
+            <li><a href="riders.html" class="mobile-nav-link">Riders</a></li>
+            <li><a href="calendar.html" class="mobile-nav-link">Calendar</a></li>
+            <li><a href="standings.html" class="mobile-nav-link">Standings</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Results Dropdown -->
+    <div class="search-results" id="searchResults"></div>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">MotoGP 2025 Official Teams & Riders</h1>
+                <p class="hero-subtitle slide-up">Live data from MotoGP.com – Updated regularly with the latest championship information</p>
+                <a href="teams.html" class="hero-cta">
+                    <span>Explore Teams</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- Quick Stats Section -->
+        <section class="section section-sm">
+            <div class="container">
+                <div class="stats-grid grid grid-cols-2 grid-cols-md-4">
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="teamsCount">12</div>
+                        <div class="stat-label">Official Teams</div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="ridersCount">22</div>
+                        <div class="stat-label">Championship Riders</div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="racesCount">22</div>
+                        <div class="stat-label">2025 Races</div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="nextRaceCount">--</div>
+                        <div class="stat-label">Days to Next Race</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Teams Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Featured Teams</h2>
+                    <p class="text-secondary text-lg">Meet the elite teams competing in the 2025 MotoGP World Championship</p>
+                </div>
+
+                <div class="featured-teams-grid grid grid-cols-2 grid-cols-md-3 grid-cols-lg-4" id="featuredTeamsGrid">
+                    <!-- Teams will be loaded here dynamically -->
+                    <div class="loading-skeleton">
+                        <div class="skeleton-avatar"></div>
+                        <div class="skeleton-text large"></div>
+                        <div class="skeleton-text medium"></div>
+                    </div>
+                    <div class="loading-skeleton">
+                        <div class="skeleton-avatar"></div>
+                        <div class="skeleton-text large"></div>
+                        <div class="skeleton-text medium"></div>
+                    </div>
+                    <div class="loading-skeleton">
+                        <div class="skeleton-avatar"></div>
+                        <div class="skeleton-text large"></div>
+                        <div class="skeleton-text medium"></div>
+                    </div>
+                    <div class="loading-skeleton">
+                        <div class="skeleton-avatar"></div>
+                        <div class="skeleton-text large"></div>
+                        <div class="skeleton-text medium"></div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <a href="teams.html" class="btn btn-primary btn-lg">View All Teams</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News Section -->
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Latest Championship Updates</h2>
+                    <p class="text-secondary text-lg">Stay up to date with the latest from the 2025 season</p>
+                </div>
+
+                <div class="news-grid grid grid-cols-1 grid-cols-md-2" id="newsGrid">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="news-item">
+                                <div class="news-meta">
+                                    <span class="news-date">May 13, 2025</span>
+                                    <span class="news-category">Race Result</span>
+                                </div>
+                                <h3 class="news-title text-xl font-semibold mb-3">French Grand Prix: Dramatic Race at Le Mans</h3>
+                                <p class="news-text text-secondary mb-4">Pedro Acosta claims his first premier class victory in a thrilling race at Circuit Bugatti...</p>
+                                <a href="#" class="btn btn-outline">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="news-item">
+                                <div class="news-meta">
+                                    <span class="news-date">May 11, 2025</span>
+                                    <span class="news-category">Championship</span>
+                                </div>
+                                <h3 class="news-title text-xl font-semibold mb-3">Championship Standings: Close Battle at Top</h3>
+                                <p class="news-text text-secondary mb-4">Marc Márquez leads the championship by just 14 points as the European rounds begin...</p>
+                                <a href="#" class="btn btn-outline">View Standings</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Race Countdown -->
+        <section class="section">
+            <div class="container">
+                <div class="next-race-card card">
+                    <div class="card-body text-center">
+                        <h2 class="text-2xl font-bold mb-4">Next Race</h2>
+                        <div class="next-race-info" id="nextRaceInfo">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p>Loading next race information...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="teams.html" class="footer-link">Teams</a></li>
+                        <li><a href="riders.html" class="footer-link">Riders</a></li>
+                        <li><a href="calendar.html" class="footer-link">Calendar</a></li>
+                        <li><a href="standings.html" class="footer-link">Standings</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.motogp.com" target="_blank" class="footer-link">Official MotoGP.com</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow MotoGP</h3>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/motogp" target="_blank" class="social-link" aria-label="YouTube">
+                            <span>📺</span>
+                        </a>
+                        <a href="https://www.instagram.com/motogp" target="_blank" class="social-link" aria-label="Instagram">
+                            <span>📷</span>
+                        </a>
+                        <a href="https://twitter.com/MotoGP" target="_blank" class="social-link" aria-label="Twitter">
+                            <span>🐦</span>
+                        </a>
+                        <a href="https://www.facebook.com/MotoGP" target="_blank" class="social-link" aria-label="Facebook">
+                            <span>📘</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p class="text-secondary text-sm">
+                        The MotoGP Team Portal provides comprehensive information about the 2025 MotoGP World Championship, featuring all official teams, riders, and championship data.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="text-muted text-sm">
+                    © 2025 MotoGP Team Portal | Data © MotoGP.com | For educational use only
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/cache-manager.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Home Page Specific Script -->
+    <script>
+        /**
+         * Home page specific functionality
+         */
+        async function initHomePage() {
+            console.log('🏠 Initializing home page...');
+
+            try {
+                // Load featured teams
+                await loadFeaturedTeams();
+
+                // Update statistics
+                updateStatistics();
+
+                // Load next race information
+                await loadNextRace();
+
+                // Initialize countdown timer
+                startCountdownTimer();
+
+                console.log('✅ Home page initialized successfully');
+
+            } catch (error) {
+                console.error('❌ Failed to initialize home page:', error);
+                showError('Failed to load some content. Please refresh the page.');
+            }
+        }
+
+        /**
+         * Load featured teams
+         */
+        async function loadFeaturedTeams() {
+            const container = document.getElementById('featuredTeamsGrid');
+            if (!container) return;
+
+            try {
+                // Get teams from cache or fetch
+                let teams = window.motoGPState.cache.teams;
+
+                if (!teams) {
+                    const dataFetcher = new DataFetcher();
+                    teams = await dataFetcher.fetchTeams();
+                }
+
+                if (!teams || teams.length === 0) {
+                    throw new Error('No teams data available');
+                }
+
+                // Show first 4 teams as featured
+                const featuredTeams = teams.slice(0, 4);
+
+                container.innerHTML = featuredTeams.map(team => `
+                    <div class="team-card team-card--${team.id.split('-')[0]} fade-on-scroll" onclick="window.motoGPApp.navigateToPage('team-detail?id=${team.id}')">
+                        <div class="team-logo">
+                            <img src="${team.logo}" alt="${team.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='🏍️';">
+                        </div>
+                        <h3 class="team-name">${team.name}</h3>
+                        <p class="team-manufacturer">${team.manufacturer}</p>
+                        <button class="btn btn-primary btn-sm">View Team</button>
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                console.error('Failed to load featured teams:', error);
+                container.innerHTML = `
+                    <div class="error-message text-center" style="grid-column: 1 / -1;">
+                        <p>Failed to load teams. Please try refreshing the page.</p>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * Update statistics
+         */
+        function updateStatistics() {
+            const teams = window.motoGPState.cache.teams || [];
+            const riders = window.motoGPState.cache.riders || [];
+            const calendar = window.motoGPState.cache.calendar || [];
+
+            // Update counts
+            const teamsCount = document.getElementById('teamsCount');
+            const ridersCount = document.getElementById('ridersCount');
+            const racesCount = document.getElementById('racesCount');
+
+            if (teamsCount) teamsCount.textContent = teams.length || 12;
+            if (ridersCount) ridersCount.textContent = riders.length || 22;
+            if (racesCount) racesCount.textContent = calendar.length || 22;
+        }
+
+        /**
+         * Load next race information
+         */
+        async function loadNextRace() {
+            const container = document.getElementById('nextRaceInfo');
+            if (!container) return;
+
+            try {
+                let calendar = window.motoGPState.cache.calendar;
+
+                if (!calendar) {
+                    const dataFetcher = new DataFetcher();
+                    calendar = await dataFetcher.fetchCalendar();
+                }
+
+                // Find next upcoming race
+                const now = new Date();
+                const nextRace = calendar.find(race => {
+                    const raceDate = new Date(race.date);
+                    return raceDate > now;
+                });
+
+                if (nextRace) {
+                    container.innerHTML = `
+                        <div class="next-race-details">
+                            <div class="next-race-flag">${nextRace.flag}</div>
+                            <h3 class="next-race-name text-xl font-semibold mb-2">${nextRace.name}</h3>
+                            <p class="next-race-circuit text-secondary mb-3">${nextRace.circuit}</p>
+                            <p class="next-race-date mb-4">${formatDate(nextRace.date, 'long')}</p>
+                            <div class="next-race-countdown" id="raceCountdown">
+                                <div class="countdown-item">
+                                    <span class="countdown-value" id="countdownDays">--</span>
+                                    <span class="countdown-label">Days</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-value" id="countdownHours">--</span>
+                                    <span class="countdown-label">Hours</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-value" id="countdownMinutes">--</span>
+                                    <span class="countdown-label">Minutes</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    // Store race date for countdown
+                    window.nextRaceDate = new Date(nextRace.date);
+
+                    // Update next race count in stats
+                    const nextRaceCount = document.getElementById('nextRaceCount');
+                    if (nextRaceCount) {
+                        const daysUntil = Math.ceil((window.nextRaceDate - now) / (1000 * 60 * 60 * 24));
+                        nextRaceCount.textContent = daysUntil > 0 ? daysUntil : '0';
+                    }
+
+                } else {
+                    container.innerHTML = `
+                        <div class="no-next-race">
+                            <p>No upcoming races scheduled. Season completed!</p>
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                console.error('Failed to load next race:', error);
+                container.innerHTML = `
+                    <div class="error-message">
+                        <p>Unable to load next race information.</p>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * Start countdown timer
+         */
+        function startCountdownTimer() {
+            if (!window.nextRaceDate) return;
+
+            function updateCountdown() {
+                const now = new Date();
+                const diff = window.nextRaceDate - now;
+
+                if (diff <= 0) {
+                    document.getElementById('raceCountdown')?.remove();
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+                const daysEl = document.getElementById('countdownDays');
+                const hoursEl = document.getElementById('countdownHours');
+                const minutesEl = document.getElementById('countdownMinutes');
+
+                if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+                if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+            }
+
+            // Update immediately
+            updateCountdown();
+
+            // Update every minute
+            setInterval(updateCountdown, 60000);
+        }
+
+        // Initialize home page when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHomePage);
+        } else {
+            initHomePage();
+        }
+
+        // Override the initHomePage function in main.js
+        window.initHomePage = initHomePage;
+    </script>
+
+    <!-- CSS for additional home page styles -->
+    <style>
+        .stats-grid {
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .stat-card {
+            padding: var(--space-6);
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-red);
+        }
+
+        .stat-number {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+            line-height: 1;
+            margin-bottom: var(--space-2);
+        }
+
+        .stat-label {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .featured-teams-grid {
+            gap: var(--space-6);
+        }
+
+        .section-header {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-8);
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            border-right: 2px solid var(--text-primary);
+            border-bottom: 2px solid var(--text-primary);
+            transform: rotate(45deg);
+            opacity: 0.6;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .news-grid {
+            gap: var(--space-6);
+        }
+
+        .news-item {
+            text-align: left;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
+            font-size: var(--text-sm);
+        }
+
+        .news-date {
+            color: var(--text-muted);
+        }
+
+        .news-category {
+            background: var(--accent-red);
+            color: var(--text-primary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+            font-weight: 500;
+        }
+
+        .news-title {
+            color: var(--text-primary);
+        }
+
+        .next-race-card {
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%);
+            border: 1px solid var(--accent-red);
+        }
+
+        .next-race-details {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .next-race-flag {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .next-race-countdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-4);
+            margin-top: var(--space-4);
+        }
+
+        .countdown-item {
+            text-align: center;
+            padding: var(--space-3);
+            background: var(--primary-bg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .countdown-value {
+            display: block;
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .countdown-label {
+            display: block;
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+            margin-top: var(--space-1);
+        }
+
+        .loading-skeleton {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            text-align: center;
+        }
+
+        .skeleton-text {
+            height: 1em;
+            background: linear-gradient(90deg, var(--secondary-bg) 25%, var(--tertiary-bg) 50%, var(--secondary-bg) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-sm);
+            margin: 0 auto var(--space-2);
+        }
+
+        .skeleton-text.large {
+            width: 80%;
+            height: 1.2em;
+        }
+
+        .skeleton-text.medium {
+            width: 60%;
+            height: 1em;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</body>
+</html>
