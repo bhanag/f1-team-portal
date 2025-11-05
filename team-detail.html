@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Details - MotoGP 2025</title>
+    <meta name="description" content="Detailed information about MotoGP teams, riders, and performance statistics">
+    <meta name="keywords" content="MotoGP, team details, riders, statistics, 2025 season">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+
+    <!-- Theme -->
+    <script>
+        const theme = localStorage.getItem('motogp-theme') ||
+                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading team details...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span style="font-size: 24px;">🏍️</span>
+                </div>
+                <span>MotoGP Portal</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="teams.html" class="nav-link">Teams</a></li>
+                    <li><a href="riders.html" class="nav-link">Riders</a></li>
+                    <li><a href="calendar.html" class="nav-link">Calendar</a></li>
+                    <li><a href="standings.html" class="nav-link">Standings</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Theme -->
+            <div class="header-actions">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search..." id="searchInput">
+                </div>
+
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
+            <li><a href="riders.html" class="mobile-nav-link">Riders</a></li>
+            <li><a href="calendar.html" class="mobile-nav-link">Calendar</a></li>
+            <li><a href="standings.html" class="mobile-nav-link">Standings</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Loading State -->
+        <div id="loadingState" class="section">
+            <div class="container text-center">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading team information...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Hero Section -->
+        <section id="teamHero" class="team-hero-section section" style="display: none;">
+            <div class="team-hero-background">
+                <div class="team-hero-overlay"></div>
+            </div>
+            <div class="container">
+                <div class="team-hero-content">
+                    <div class="team-hero-info">
+                        <div class="team-hero-logo" id="teamHeroLogo">
+                            <img src="" alt="" onerror="this.style.display='none'; this.parentElement.innerHTML='🏍️';">
+                        </div>
+                        <div class="team-hero-details">
+                            <h1 class="team-hero-name" id="teamHeroName">Team Name</h1>
+                            <p class="team-hero-manufacturer" id="teamHeroManufacturer">Manufacturer</p>
+                            <div class="team-hero-meta">
+                                <span class="team-hero-location" id="teamHeroBase">
+                                    <span class="location-icon">📍</span>
+                                    <span>Base Location</span>
+                                </span>
+                                <span class="team-hero-principal" id="teamHeroPrincipal">
+                                    <span class="principal-icon">👤</span>
+                                    <span>Team Principal</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-hero-actions">
+                        <a href="#" id="teamWebsiteLink" target="_blank" class="btn btn-primary btn-lg">
+                            <span>🌐</span>
+                            Official Website
+                        </a>
+                        <button onclick="window.history.back()" class="btn btn-outline btn-lg">
+                            <span>←</span>
+                            Back to Teams
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Stats Section -->
+        <section id="teamStatsSection" class="section bg-secondary" style="display: none;">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Team Performance</h2>
+                    <p class="text-secondary text-lg">2025 season statistics and achievements</p>
+                </div>
+
+                <div class="team-stats-grid grid grid-cols-2 grid-cols-md-4" id="teamStatsGrid">
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="teamChampionshipPosition">--</div>
+                        <div class="stat-label">Championship Position</div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="teamTotalPoints">--</div>
+                        <div class="stat-label">Total Points</div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="teamWins">--</div>
+                        <div class="stat-label">Race Wins</div>
+                    </div>
+                    <div class="stat-card text-center">
+                        <div class="stat-number" id="teamPodiums">--</div>
+                        <div class="stat-label">Podiums</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Riders Section -->
+        <section id="ridersSection" class="section" style="display: none;">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Team Riders</h2>
+                    <p class="text-secondary text-lg">Meet the riders representing this team</p>
+                </div>
+
+                <div class="riders-grid grid grid-cols-1 grid-cols-md-2" id="ridersGrid">
+                    <!-- Rider cards will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Team History Section -->
+        <section id="teamHistorySection" class="section bg-secondary" style="display: none;">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Team Information</h2>
+                    <p class="text-secondary text-lg">Learn more about the team</p>
+                </div>
+
+                <div class="team-info-cards grid grid-cols-1 grid-cols-md-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-xl font-semibold">Team Details</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-item">
+                                <span class="info-label">Manufacturer:</span>
+                                <span class="info-value" id="infoManufacturer">--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Base:</span>
+                                <span class="info-value" id="infoBase">--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Team Principal:</span>
+                                <span class="info-value" id="infoPrincipal">--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Founded:</span>
+                                <span class="info-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-xl font-semibold">Championship History</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-item">
+                                <span class="info-label">World Championships:</span>
+                                <span class="info-value">--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Race Wins:</span>
+                                <span class="info-value">--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Pole Positions:</span>
+                                <span class="info-value">--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Podium Finishes:</span>
+                                <span class="info-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bike Specifications Section -->
+        <section id="bikeSpecsSection" class="section" style="display: none;">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Motorcycle Specifications</h2>
+                    <p class="text-secondary text-lg">Technical details of the team's racing machine</p>
+                </div>
+
+                <div class="bike-specs-card card">
+                    <div class="card-body">
+                        <div class="bike-image text-center mb-8">
+                            <img src="/images/heroes/motogp-bike-placeholder.jpg"
+                                 alt="Motorcycle"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='🏍️';"
+                                 style="max-width: 300px; margin: 0 auto;">
+                        </div>
+
+                        <div class="bike-specs-grid grid grid-cols-1 grid-cols-md-3">
+                            <div class="spec-item text-center">
+                                <h4 class="spec-title">Engine</h4>
+                                <p class="spec-value">4-Stroke V4</p>
+                            </div>
+                            <div class="spec-item text-center">
+                                <h4 class="spec-title">Displacement</h4>
+                                <p class="spec-value">1000cc</p>
+                            </div>
+                            <div class="spec-item text-center">
+                                <h4 class="spec-title">Power Output</h4>
+                                <p class="spec-value">250+ HP</p>
+                            </div>
+                            <div class="spec-item text-center">
+                                <h4 class="spec-title">Top Speed</h4>
+                                <p class="spec-value">350+ km/h</p>
+                            </div>
+                            <div class="spec-item text-center">
+                                <h4 class="spec-title">Weight</h4>
+                                <p class="spec-value">157 kg</p>
+                            </div>
+                            <div class="spec-item text-center">
+                                <h4 class="spec-title">Transmission</h4>
+                                <p class="spec-value">6-Speed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Teams Section -->
+        <section id="relatedTeamsSection" class="section bg-secondary" style="display: none;">
+            <div class="container">
+                <div class="section-header text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Other Teams</h2>
+                    <p class="text-secondary text-lg">Explore other teams in the championship</p>
+                </div>
+
+                <div class="related-teams-grid grid grid-cols-2 grid-cols-md-3 grid-cols-lg-4" id="relatedTeamsGrid">
+                    <!-- Related team cards will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Error State -->
+        <section id="errorState" class="section" style="display: none;">
+            <div class="container text-center">
+                <div class="error-content">
+                    <div class="error-icon">
+                        <span style="font-size: 4rem;">❌</span>
+                    </div>
+                    <h2 class="text-2xl font-semibold mb-4">Team Not Found</h2>
+                    <p class="text-secondary mb-6">The team you're looking for doesn't exist or has been moved.</p>
+                    <div class="error-actions">
+                        <a href="teams.html" class="btn btn-primary btn-lg">Browse All Teams</a>
+                        <button onclick="window.history.back()" class="btn btn-outline btn-lg">Go Back</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="teams.html" class="footer-link">Teams</a></li>
+                        <li><a href="riders.html" class="footer-link">Riders</a></li>
+                        <li><a href="calendar.html" class="footer-link">Calendar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Championship</h3>
+                    <ul class="footer-links">
+                        <li><a href="standings.html" class="footer-link">Standings</a></li>
+                        <li><a href="calendar.html" class="footer-link">Race Calendar</a></li>
+                        <li><a href="https://www.motogp.com" target="_blank" class="footer-link">Official MotoGP</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow MotoGP</h3>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/motogp" target="_blank" class="social-link" aria-label="YouTube">
+                            <span>📺</span>
+                        </a>
+                        <a href="https://www.instagram.com/motogp" target="_blank" class="social-link" aria-label="Instagram">
+                            <span>📷</span>
+                        </a>
+                        <a href="https://twitter.com/MotoGP" target="_blank" class="social-link" aria-label="Twitter">
+                            <span>🐦</span>
+                        </a>
+                        <a href="https://www.facebook.com/MotoGP" target="_blank" class="social-link" aria-label="Facebook">
+                            <span>📘</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p class="text-secondary text-sm">
+                        Detailed information about MotoGP teams, riders, and championship performance for the 2025 season.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="text-muted text-sm">
+                    © 2025 MotoGP Team Portal | Data © MotoGP.com | For educational use only
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/cache-manager.js"></script>
+    <script src="js/data-fetcher.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Team Detail Page Specific Script -->
+    <script>
+        /**
+         * Team detail page functionality
+         */
+        let currentTeam = null;
+
+        async function initTeamDetailPage() {
+            console.log('🏆 Initializing team detail page...');
+
+            try {
+                // Get team ID from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const teamId = urlParams.get('id');
+
+                if (!teamId) {
+                    showErrorState();
+                    return;
+                }
+
+                // Load team data
+                await loadTeamData(teamId);
+
+                console.log('✅ Team detail page initialized successfully');
+
+            } catch (error) {
+                console.error('❌ Failed to initialize team detail page:', error);
+                showErrorState();
+            }
+        }
+
+        /**
+         * Load team data
+         */
+        async function loadTeamData(teamId) {
+            try {
+                showLoading();
+
+                // Get teams from cache or fetch
+                let teams = window.motoGPState.cache.teams;
+
+                if (!teams) {
+                    const dataFetcher = new DataFetcher();
+                    teams = await dataFetcher.fetchTeams();
+                }
+
+                if (!teams || teams.length === 0) {
+                    throw new Error('No teams data available');
+                }
+
+                // Find the requested team
+                currentTeam = teams.find(team => team.id === teamId);
+
+                if (!currentTeam) {
+                    throw new Error(`Team ${teamId} not found`);
+                }
+
+                // Get riders data
+                let riders = window.motoGPState.cache.riders;
+
+                if (!riders) {
+                    const dataFetcher = new DataFetcher();
+                    riders = await dataFetcher.fetchRiders();
+                }
+
+                // Get standings data
+                let standings = window.motoGPState.cache.standings;
+
+                if (!standings) {
+                    const dataFetcher = new DataFetcher();
+                    standings = await dataFetcher.fetchStandings();
+                }
+
+                // Render team information
+                renderTeamHero();
+                renderTeamStats(standings);
+                renderTeamRiders(riders);
+                renderTeamInfo();
+                renderBikeSpecs();
+                renderRelatedTeams(teams);
+
+                hideLoading();
+
+            } catch (error) {
+                console.error('Failed to load team data:', error);
+                showErrorState();
+            }
+        }
+
+        /**
+         * Render team hero section
+         */
+        function renderTeamHero() {
+            const heroSection = document.getElementById('teamHero');
+
+            // Set team color
+            const teamColorClass = getTeamColorClass(currentTeam.id);
+            document.body.classList.add(`team-${teamColorClass}`);
+
+            // Populate hero information
+            document.getElementById('teamHeroName').textContent = currentTeam.name;
+            document.getElementById('teamHeroManufacturer').textContent = currentTeam.manufacturer;
+            document.getElementById('teamHeroBase').innerHTML = `
+                <span class="location-icon">📍</span>
+                <span>${currentTeam.base}</span>
+            `;
+            document.getElementById('teamHeroPrincipal').innerHTML = `
+                <span class="principal-icon">👤</span>
+                <span>${currentTeam.team_principal}</span>
+            `;
+
+            // Set logo
+            const logoImg = document.querySelector('#teamHeroLogo img');
+            if (logoImg) {
+                logoImg.src = currentTeam.logo;
+                logoImg.alt = currentTeam.name;
+            }
+
+            // Set website link
+            const websiteLink = document.getElementById('teamWebsiteLink');
+            if (websiteLink) {
+                websiteLink.href = currentTeam.website;
+            }
+
+            // Set hero background with team color
+            const heroBackground = document.querySelector('.team-hero-background');
+            if (heroBackground) {
+                heroBackground.style.background = `linear-gradient(135deg, ${currentTeam.color}22 0%, ${currentTeam.color}11 100%)`;
+            }
+
+            heroSection.style.display = 'block';
+        }
+
+        /**
+         * Render team statistics
+         */
+        function renderTeamStats(standings) {
+            const statsSection = document.getElementById('teamStatsSection');
+
+            // Find team in standings
+            let teamStanding = null;
+            if (standings && standings.team_championship) {
+                teamStanding = standings.team_championship.find(team =>
+                    team.team_name.toLowerCase().includes(currentTeam.name.toLowerCase()) ||
+                    currentTeam.name.toLowerCase().includes(team.team_name.toLowerCase())
+                );
+            }
+
+            if (teamStanding) {
+                document.getElementById('teamChampionshipPosition').textContent = teamStanding.position;
+                document.getElementById('teamTotalPoints').textContent = teamStanding.points;
+                document.getElementById('teamWins').textContent = teamStanding.wins || 0;
+                document.getElementById('teamPodiums').textContent = teamStanding.podiums || 0;
+            } else {
+                // Use default/placeholder values
+                document.getElementById('teamChampionshipPosition').textContent = '--';
+                document.getElementById('teamTotalPoints').textContent = '--';
+                document.getElementById('teamWins').textContent = '--';
+                document.getElementById('teamPodiums').textContent = '--';
+            }
+
+            statsSection.style.display = 'block';
+        }
+
+        /**
+         * Render team riders
+         */
+        function renderTeamRiders(allRiders) {
+            const ridersSection = document.getElementById('ridersSection');
+            const ridersGrid = document.getElementById('ridersGrid');
+
+            // Find riders for this team
+            const teamRiders = allRiders.filter(rider =>
+                rider.team === currentTeam.id ||
+                currentTeam.riders.includes(rider.id)
+            );
+
+            if (teamRiders.length === 0) {
+                ridersGrid.innerHTML = `
+                    <div class="text-center" style="grid-column: 1 / -1;">
+                        <p>No rider information available</p>
+                    </div>
+                `;
+            } else {
+                ridersGrid.innerHTML = teamRiders.map(rider => `
+                    <div class="rider-card">
+                        <div class="rider-header">
+                            <div class="rider-photo">
+                                <img src="${rider.photo}" alt="${rider.name}"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍🦰';"
+                                     loading="lazy">
+                            </div>
+                            <div class="rider-basic-info">
+                                <div class="rider-number">${rider.number}</div>
+                                <h3 class="rider-name">${rider.name}</h3>
+                                <p class="rider-nationality">${rider.flag} ${rider.nationality}</p>
+                            </div>
+                        </div>
+                        <div class="rider-stats">
+                            <div class="rider-stat-grid grid grid-cols-2">
+                                <div class="rider-stat-item text-center">
+                                    <div class="rider-stat-value">${rider.career_wins}</div>
+                                    <div class="rider-stat-label">Career Wins</div>
+                                </div>
+                                <div class="rider-stat-item text-center">
+                                    <div class="rider-stat-value">${rider.career_podiums}</div>
+                                    <div class="rider-stat-label">Podiums</div>
+                                </div>
+                                <div class="rider-stat-item text-center">
+                                    <div class="rider-stat-value">${rider.career_poles}</div>
+                                    <div class="rider-stat-label">Pole Positions</div>
+                                </div>
+                                <div class="rider-stat-item text-center">
+                                    <div class="rider-stat-value">${rider.world_championships}</div>
+                                    <div class="rider-stat-label">World Titles</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            ridersSection.style.display = 'block';
+        }
+
+        /**
+         * Render team information
+         */
+        function renderTeamInfo() {
+            const historySection = document.getElementById('teamHistorySection');
+
+            document.getElementById('infoManufacturer').textContent = currentTeam.manufacturer;
+            document.getElementById('infoBase').textContent = currentTeam.base;
+            document.getElementById('infoPrincipal').textContent = currentTeam.team_principal;
+
+            historySection.style.display = 'block';
+        }
+
+        /**
+         * Render bike specifications
+         */
+        function renderBikeSpecs() {
+            const specsSection = document.getElementById('bikeSpecsSection');
+
+            // Update specs based on manufacturer
+            updateBikeSpecsByManufacturer(currentTeam.manufacturer);
+
+            specsSection.style.display = 'block';
+        }
+
+        /**
+         * Update bike specs based on manufacturer
+         */
+        function updateBikeSpecsByManufacturer(manufacturer) {
+            const specs = {
+                'Ducati': {
+                    engine: '4-Stroke V4',
+                    displacement: '1000cc',
+                    power: '250+ HP',
+                    topSpeed: '355+ km/h',
+                    weight: '157 kg'
+                },
+                'Yamaha': {
+                    engine: '4-Stroke Inline-4',
+                    displacement: '1000cc',
+                    power: '240+ HP',
+                    topSpeed: '340+ km/h',
+                    weight: '157 kg'
+                },
+                'Honda': {
+                    engine: '4-Stroke V4',
+                    displacement: '1000cc',
+                    power: '245+ HP',
+                    topSpeed: '350+ km/h',
+                    weight: '157 kg'
+                },
+                'KTM': {
+                    engine: '4-Stroke V4',
+                    displacement: '1000cc',
+                    power: '260+ HP',
+                    topSpeed: '360+ km/h',
+                    weight: '157 kg'
+                },
+                'Aprilia': {
+                    engine: '4-Stroke V4',
+                    displacement: '1000cc',
+                    power: '250+ HP',
+                    topSpeed: '345+ km/h',
+                    weight: '157 kg'
+                }
+            };
+
+            const manufacturerSpecs = specs[manufacturer] || specs['Ducati'];
+
+            // Update spec values in the DOM
+            const specElements = document.querySelectorAll('.spec-value');
+            if (specElements.length >= 5) {
+                specElements[0].textContent = manufacturerSpecs.engine;
+                specElements[1].textContent = manufacturerSpecs.displacement;
+                specElements[2].textContent = manufacturerSpecs.power;
+                specElements[3].textContent = manufacturerSpecs.topSpeed;
+                specElements[4].textContent = manufacturerSpecs.weight;
+            }
+        }
+
+        /**
+         * Render related teams
+         */
+        function renderRelatedTeams(allTeams) {
+            const relatedSection = document.getElementById('relatedTeamsSection');
+            const relatedGrid = document.getElementById('relatedTeamsGrid');
+
+            // Get teams with same manufacturer or other teams
+            const relatedTeams = allTeams
+                .filter(team => team.id !== currentTeam.id)
+                .slice(0, 8);
+
+            relatedGrid.innerHTML = relatedTeams.map(team => `
+                <div class="team-card team-card--${getTeamColorClass(team.id)}"
+                     onclick="navigateToTeam('${team.id}')">
+                    <div class="team-logo">
+                        <img src="${team.logo}" alt="${team.name}"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='🏍️';"
+                             loading="lazy">
+                    </div>
+                    <h3 class="team-name">${team.name}</h3>
+                    <p class="team-manufacturer">${team.manufacturer}</p>
+                    <button class="btn btn-primary btn-sm">View Team</button>
+                </div>
+            `).join('');
+
+            relatedSection.style.display = 'block';
+        }
+
+        /**
+         * Get team color class
+         */
+        function getTeamColorClass(teamId) {
+            const teamMap = {
+                'ducati-lenovo': 'ducati',
+                'aprilia-racing': 'aprilia',
+                'monster-yamaha': 'yamaha',
+                'redbull-ktm': 'ktm',
+                'honda-castrol': 'honda',
+                'lcr-honda': 'honda',
+                'gresini-racing': 'ducati',
+                'vr46-racing': 'ducati',
+                'prima-pramac': 'yamaha',
+                'ktm-tech3': 'ktm',
+                'trackhouse': 'aprilia',
+                'rnf-racing': 'ducati'
+            };
+            return teamMap[teamId] || 'default';
+        }
+
+        /**
+         * Get team color class
+         */
+        function getTeamColorClass(teamId) {
+            const teamMap = {
+                'ducati-lenovo': 'ducati',
+                'aprilia-racing': 'aprilia',
+                'monster-yamaha': 'yamaha',
+                'redbull-ktm': 'ktm',
+                'honda-castrol': 'honda',
+                'lcr-honda': 'honda',
+                'gresini-racing': 'ducati',
+                'vr46-racing': 'ducati',
+                'prima-pramac': 'yamaha',
+                'ktm-tech3': 'ktm',
+                'trackhouse': 'aprilia',
+                'rnf-racing': 'ducati'
+            };
+            return teamMap[teamId] || 'default';
+        }
+
+        /**
+         * Navigate to team detail
+         */
+        function navigateToTeam(teamId) {
+            window.location.href = `team-detail.html?id=${teamId}`;
+        }
+
+        /**
+         * Show loading state
+         */
+        function showLoading() {
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('teamHero').style.display = 'none';
+            document.getElementById('teamStatsSection').style.display = 'none';
+            document.getElementById('ridersSection').style.display = 'none';
+            document.getElementById('teamHistorySection').style.display = 'none';
+            document.getElementById('bikeSpecsSection').style.display = 'none';
+            document.getElementById('relatedTeamsSection').style.display = 'none';
+            document.getElementById('errorState').style.display = 'none';
+        }
+
+        /**
+         * Hide loading state
+         */
+        function hideLoading() {
+            document.getElementById('loadingState').style.display = 'none';
+        }
+
+        /**
+         * Show error state
+         */
+        function showErrorState() {
+            hideLoading();
+            document.getElementById('errorState').style.display = 'block';
+        }
+
+        // Initialize team detail page when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTeamDetailPage);
+        } else {
+            initTeamDetailPage();
+        }
+
+        // Override the initTeamDetailPage function in main.js
+        window.initTeamDetailPage = initTeamDetailPage;
+        window.navigateToTeam = navigateToTeam;
+    </script>
+
+    <!-- CSS for additional team detail page styles -->
+    <style>
+        .team-hero-section {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .team-hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%);
+        }
+
+        .team-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(14, 14, 14, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
+        }
+
+        .team-hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+            align-items: center;
+            text-align: center;
+        }
+
+        .team-hero-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-6);
+        }
+
+        .team-hero-logo {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary-bg);
+            border-radius: var(--radius-full);
+            border: 3px solid var(--accent-red);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .team-hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: var(--radius-full);
+        }
+
+        .team-hero-name {
+            font-size: var(--text-5xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .team-hero-manufacturer {
+            font-size: var(--text-xl);
+            color: var(--accent-red);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .team-hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-hero-location,
+        .team-hero-principal {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .team-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            justify-content: center;
+        }
+
+        .team-stats-grid {
+            gap: var(--space-6);
+        }
+
+        .rider-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .rider-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .rider-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-6);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .rider-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            background: var(--tertiary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .rider-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rider-basic-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .rider-number {
+            display: inline-block;
+            background: var(--accent-red);
+            color: var(--text-primary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-2);
+        }
+
+        .rider-name {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin: 0 0 var(--space-1) 0;
+            color: var(--text-primary);
+        }
+
+        .rider-nationality {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .rider-stats {
+            padding: var(--space-6);
+        }
+
+        .rider-stat-grid {
+            gap: var(--space-4);
+        }
+
+        .rider-stat-item {
+            padding: var(--space-3);
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-md);
+        }
+
+        .rider-stat-value {
+            display: block;
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+        }
+
+        .rider-stat-label {
+            display: block;
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+            margin-top: var(--space-1);
+        }
+
+        .team-info-cards {
+            gap: var(--space-6);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .bike-specs-card {
+            text-align: center;
+        }
+
+        .bike-specs-grid {
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .spec-item {
+            padding: var(--space-4);
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-md);
+        }
+
+        .spec-title {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .spec-value {
+            font-size: var(--text-base);
+            color: var(--accent-red);
+            font-weight: 500;
+        }
+
+        .related-teams-grid {
+            gap: var(--space-6);
+        }
+
+        .error-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-icon {
+            margin-bottom: var(--space-6);
+            opacity: 0.6;
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            justify-content: center;
+        }
+
+        /* Team-specific color themes */
+        .team-ducati .team-hero-section {
+            background: linear-gradient(135deg, #DC143C22 0%, #DC143C11 100%);
+        }
+
+        .team-yamaha .team-hero-section {
+            background: linear-gradient(135deg, #0066CC22 0%, #0066CC11 100%);
+        }
+
+        .team-honda .team-hero-section {
+            background: linear-gradient(135deg, #FF8C0022 0%, #FF8C0011 100%);
+        }
+
+        .team-ktm .team-hero-section {
+            background: linear-gradient(135deg, #FF660022 0%, #FF660011 100%);
+        }
+
+        .team-aprilia .team-hero-section {
+            background: linear-gradient(135deg, #4A90E222 0%, #4A90E211 100%);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .team-hero-name {
+                font-size: var(--text-3xl);
+            }
+
+            .team-hero-manufacturer {
+                font-size: var(--text-lg);
+            }
+
+            .team-hero-meta {
+                flex-direction: column;
+                gap: var(--space-3);
+            }
+
+            .team-hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .team-hero-actions .btn {
+                width: 100%;
+            }
+
+            .rider-header {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-3);
+            }
+
+            .rider-basic-info {
+                text-align: center;
+            }
+
+            .info-item {
+                flex-direction: column;
+                gap: var(--space-1);
+                text-align: center;
+            }
+
+            .team-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</body>
+</html>
